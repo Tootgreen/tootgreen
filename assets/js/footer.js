@@ -8,7 +8,6 @@ window.renderFooter = function () {
   const E = C.etsy || {};
   const A = C.amazon || {};
   const F = C.footer || {};
-  const S = C.stats || {};
   const year = new Date().getFullYear();
 
   footer.innerHTML = `
@@ -80,8 +79,7 @@ window.renderFooter = function () {
     etsyLinks.innerHTML = `
       <li><a href="${E.shopUrl || "#"}" rel="noopener noreferrer">Shop on Etsy</a></li>
       ${A.enabled && A.searchUrl ? `<li><a href="${A.searchUrl}" rel="noopener noreferrer">Shop on Amazon</a></li>` : ""}
-      <li><a href="${E.reviewsUrl || E.shopUrl || "#"}" rel="noopener noreferrer">Reviews (${S.reviews || 0})</a></li>
-      <li><a href="/delivery.html">Delivery & Returns</a></li>
+            <li><a href="/delivery.html">Delivery & Returns</a></li>
       <li><a href="${E.messageUrl || E.shopUrl || "#"}" rel="noopener noreferrer">Message Us</a></li>
     `;
   }

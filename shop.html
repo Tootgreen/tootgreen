@@ -102,13 +102,13 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
 <div id="site-footer"></div>
 
 <script>
-const C = window.CONFIG, E = C.etsy, A = C.amazon, S = C.stats;
+const C = window.CONFIG, E = C.etsy, A = C.amazon;
 let liveProducts = null;
 let currentShareUrl = '';
 
 // Shop header
 document.getElementById('shopEyebrow').textContent = C.business.name;
-document.getElementById('shopSubhead').textContent = S.products + ' personalised gifts — all made to order in the UK';
+document.getElementById('shopSubhead').textContent = (C.products ? C.products.length : 0) + ' personalised gifts — all made to order in the UK';
 
 // Image placeholder
 const catIcons = { Mugs:'☕', Badges:'📌', Clothing:'👕', Slate:'🪨', Other:'🎁' };
@@ -269,7 +269,7 @@ function productCard(p, trackView = true) {
       <div class="product-name">${p.name}</div>
       <div class="product-type">${p.cat} · Personalised</div>
       <div class="delivery-est">📦 Get it by <strong>${delivBy}</strong></div>
-      <div class="product-foot"><div class="product-price">£${Number(p.price).toFixed(2)}</div><div class="product-stars"><span class="s">★★★★★</span> ${S.rating}</div></div>
+      <div class="product-foot"><div class="product-price">£${Number(p.price).toFixed(2)}</div></div>
       <div class="product-buy-row" style="grid-template-columns:${cols}">
         <a class="buy-btn buy-etsy" href="${p.url}" rel="noopener noreferrer" onclick="event.stopPropagation()"><span class="buy-icon">🛍</span><span class="buy-label">Buy on<strong>Etsy</strong></span></a>
         ${amzBtn ? amzBtn.replace('rel="noopener noreferrer"','rel="noopener noreferrer" onclick="event.stopPropagation()"') : ''}

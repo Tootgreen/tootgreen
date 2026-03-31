@@ -39,7 +39,7 @@ window.CONFIG = {
     messageUrl: "https://www.etsy.com/uk/conversations/new?with_id=172527804",
     reviewsUrl: "https://www.etsy.com/uk/shop/TootGreen#reviews",
     shopUrl2:   null,
-    starSeller: false,   // ← set true if client has Etsy Star Seller badge
+    starSeller: false,
   },
 
   /* ─────────────────────────────────────────
@@ -88,25 +88,13 @@ window.CONFIG = {
   },
 
   /* ─────────────────────────────────────────
-     STATS
-  ───────────────────────────────────────── */
-  stats: {
-    sales:    827,
-    rating:   "4.9",
-    reviews:  113,
-    products: 126,
-    years:    7,
-  },
-
-  /* ─────────────────────────────────────────
      TRUST BAR
   ───────────────────────────────────────── */
   trustBar: [
     { icon: "✏️", text: "Everything personalised" },
     { icon: "📦", text: "Dispatched in 1–3 days" },
     { icon: "💬", text: "Custom orders welcome" },
-    { icon: "⭐", text: "4.9 stars on Etsy" },
-    { icon: "🇬🇧", text: "UK made, ships worldwide" },
+        { icon: "🇬🇧", text: "UK made, ships worldwide" },
   ],
 
   /* ─────────────────────────────────────────
