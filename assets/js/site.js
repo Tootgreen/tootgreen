@@ -6,7 +6,19 @@
   var path = window.location.pathname.toLowerCase();
   var target = page.toLowerCase();
 
-  if (!isOn) {
+  var params = new URLSearchParams(window.location.search);
+
+  if (params.get("preview") === "1") {
+    localStorage.setItem("tootgreen_preview_bypass", "true");
+  }
+
+  if (params.get("preview") === "0") {
+    localStorage.removeItem("tootgreen_preview_bypass");
+  }
+
+  var bypass = localStorage.getItem("tootgreen_preview_bypass") === "true";
+
+  if (!isOn || bypass) {
     return;
   }
 
