@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<title>Custom Orders | TootGreen Personalised Gifts</title>
+<meta name="description" content="Can't find what you're looking for? TootGreen makes bespoke personalised gifts to order. Tell us your idea and we'll make it happen. Free proof before production.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/custom.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+
+<div class="custom-hero">
+  <div class="wrap">
+    <div class="custom-hero-inner">
+      <div>
+        <p class="eyebrow">Made Just for You</p>
+        <h1 class="display display-xl" style="margin-bottom:1rem;">Custom Orders Welcome</h1>
+        <p class="lead" style="margin-bottom:2rem;">Can't find exactly what you're looking for? We can make it. Tell us your idea and we'll bring it to life.</p>
+
+        <div class="process-list">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <div>
+              <div class="step-title">Tell us your idea</div>
+              <div class="step-desc">Send us a message with what you have in mind. The more detail the better — names, occasion, colours, anything goes.</div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <div>
+              <div class="step-title">We send you a proof</div>
+              <div class="step-desc">Before we make anything, you'll see a digital proof of exactly what your item will look like. We revise until you're happy.</div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <div>
+              <div class="step-title">We make &amp; dispatch</div>
+              <div class="step-desc">Once approved, we get to work. Most custom orders are dispatched within 2–4 working days, carefully packaged.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-form-card">
+        <div class="form-title">Request a Quote</div>
+        <div class="form-sub">Fill in the form and we'll get back to you within 24 hours.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="jane@email.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Product Type</label>
+          <select class="form-select">
+            <option>Custom Mug</option>
+            <option>Badge / Pin</option>
+            <option>Clothing</option>
+            <option>Chocolate Bar</option>
+            <option>Teddy Bear</option>
+            <option>Cushion</option>
+            <option>Slate / Wall Art</option>
+            <option>Something else…</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tell Us Your Idea</label>
+          <textarea class="form-textarea" placeholder="Describe what you'd like — names, occasion, wording, colours, any reference images…"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Quantity</label>
+            <input class="form-input" type="number" placeholder="1" min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">When Do You Need It?</label>
+            <input class="form-input" type="date">
+          </div>
+        </div>
+
+        <button class="btn btn-green" style="width:100%;justify-content:center;padding:1rem;" onclick="submitForm.call(this)">Send Request →</button>
+        <p class="form-note" style="text-align:center;margin-top:0.8rem;">Or <a id="customEtsyMsg" href="#" rel="noopener noreferrer" style="color:var(--etsy);">message us directly on Etsy</a> for a quicker response.</p>
+
+        <div class="form-success" id="formSuccess">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🎉</div>
+          <strong style="color:var(--g-dk);">Request sent!</strong>
+          <p style="font-size:0.85rem;color:var(--body);margin-top:0.3rem;">We'll be in touch within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <p class="eyebrow">What We Can Make</p>
+      <h2 class="display display-lg">Custom product types</h2>
+    </div>
+
+    <div class="custom-types-grid reveal">
+      <div class="custom-type-card"><span class="ctc-icon">☕</span><div class="ctc-name">Mugs</div><div class="ctc-desc">11oz ceramic, any wording or design</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">📌</span><div class="ctc-name">Badges &amp; Pins</div><div class="ctc-desc">55mm button badges, any design</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">👕</span><div class="ctc-name">Clothing</div><div class="ctc-desc">T-shirts, vests, hoodies — printed</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">🍫</span><div class="ctc-name">Chocolate Bars</div><div class="ctc-desc">Custom wrapper gifts</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">🐻</span><div class="ctc-name">Teddies</div><div class="ctc-desc">Personalised soft toys &amp; keepsakes</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">🪨</span><div class="ctc-name">Slate &amp; Boards</div><div class="ctc-desc">Photo-printed slate, chopping boards</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">🖼️</span><div class="ctc-name">Posters</div><div class="ctc-desc">Art prints, typography, personalised</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">💌</span><div class="ctc-name">Greeting Cards</div><div class="ctc-desc">Birthday, occasions, funny &amp; rude</div></div>
+      <div class="custom-type-card"><span class="ctc-icon">🏡</span><div class="ctc-name">Wall Decorations</div><div class="ctc-desc">Family signs, prints, hanging décor</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+const C = window.CONFIG, E = C.etsy;
+
+document.getElementById('customEtsyMsg').href = E.messageUrl || E.shopUrl;
+
+async function submitForm() {
+  const btn = this;
+  const form = btn.closest('.custom-form-card');
+  const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
+  const name = inputs[0]?.value.trim();
+  const email = inputs[1]?.value.trim();
+  const product = inputs[2]?.value;
+  const idea = inputs[3]?.value.trim();
+  const qty = inputs[4]?.value;
+  const date = inputs[5]?.value;
+
+  if (!name || !email || !idea) {
+    alert('Please fill in your name, email and idea before sending.');
+    return;
+  }
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    subject: 'TootGreen Custom Order — ' + product + ' from ' + name,
+    from_name: name,
+    email: email,
+    message:
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Product: ' + product + '\n' +
+      'Qty: ' + (qty || '1') + '\n' +
+      'Needed by: ' + (date || 'Not specified') + '\n\n' +
+      'Idea:\n' + idea
+  })
+});
+
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById('formSuccess').classList.add('show');
+      inputs.forEach(i => i.value = '');
+    } else {
+      alert('Something went wrong — please message us on Etsy.');
+      window.open(E.messageUrl || E.shopUrl, '_blank');
+    }
+  } catch {
+    alert('Something went wrong — please message us on Etsy.');
+    window.open(E.messageUrl || E.shopUrl, '_blank');
+  }
+
+  btn.textContent = 'Send Request →';
+  btn.disabled = false;
+}
+
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.08 }
+);
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+
+
+
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>

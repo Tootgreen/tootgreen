@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<link rel="manifest" href="/manifest.json">
+
+<title>Gift Ideas Blog | TootGreen Personalised Gifts</title>
+<meta name="description" content="Gift ideas, inspiration and guides from TootGreen — personalised gifts made in the UK.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/blog.html">
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+
+<style>
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.blog-card {
+  background: var(--white);
+  border: 1.5px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.22s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.blog-card:hover {
+  border-color: var(--g);
+  box-shadow: 0 8px 28px rgba(46,125,50,0.1);
+  transform: translateY(-3px);
+}
+
+.blog-img {
+  aspect-ratio: 16 / 9;
+  background: var(--g-lt);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-body {
+  padding: 1.2rem;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.blog-cat {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--g-lt);
+  color: var(--g-dk);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.blog-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.blog-read-more {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--g-dk);
+  margin-top: 0.8rem;
+  display: inline-block;
+}
+
+.blog-read-more::after {
+  content: ' →';
+}
+
+@media (max-width: 960px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+  <section class="section">
+    <div class="wrap">
+
+      <p class="eyebrow">Ideas & Inspiration</p>
+      <h1 class="display display-lg">The TootGreen Blog</h1>
+      <p class="lead">Gift ideas, guides and inspiration — because great gifts don't happen by accident.</p>
+
+      <div class="blog-grid">
+
+        <a class="blog-card" href="/blog/anniversary.html">
+          <div class="blog-img">
+            <img src="/images/anniversary.jpg" alt="Anniversary gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Occasions</span></div>
+            <div class="blog-title">Anniversary Gift Ideas</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/birthday.html">
+          <div class="blog-img">
+            <img src="/images/birthday.jpg" alt="Birthday gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Occasions</span></div>
+            <div class="blog-title">Birthday Gift Inspiration</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/christmas.html">
+          <div class="blog-img">
+            <img src="/images/christmas.jpg" alt="Christmas gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Seasonal</span></div>
+            <div class="blog-title">Christmas Gift Guide</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/wedding.html">
+          <div class="blog-img">
+            <img src="/images/wedding.jpg" alt="Wedding gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Weddings</span></div>
+            <div class="blog-title">Wedding Gift Ideas</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/newbaby.html">
+          <div class="blog-img">
+            <img src="/images/newbaby.jpg" alt="New baby gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Family</span></div>
+            <div class="blog-title">New Baby Gifts</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/teachers.html">
+          <div class="blog-img">
+            <img src="/images/teachers.jpg" alt="Teacher gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Thank You</span></div>
+            <div class="blog-title">Teacher Gift Ideas</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/lastminute.html">
+          <div class="blog-img">
+            <img src="/images/lastminute.jpg" alt="Last minute gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Quick Ideas</span></div>
+            <div class="blog-title">Last Minute Gift Ideas</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/leaving.html">
+          <div class="blog-img">
+            <img src="/images/leaving.jpg" alt="Leaving gifts" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Workplace</span></div>
+            <div class="blog-title">Leaving Gift Ideas</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/guide.html">
+          <div class="blog-img">
+            <img src="/images/guide.jpg" alt="Gift buying guide" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Guides</span></div>
+            <div class="blog-title">Gift Buying Guide</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+        <a class="blog-card" href="/blog/behindscenes.html">
+          <div class="blog-img">
+            <img src="/images/behindscenes.jpg" alt="Behind the scenes" onerror="this.src='/images/about_hero.png'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-meta"><span class="blog-cat">Behind the Scenes</span></div>
+            <div class="blog-title">How We Make Your Gifts</div>
+            <span class="blog-read-more">Read more</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>

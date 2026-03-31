@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<link rel="manifest" href="/manifest.json">
+<title>FAQ | TootGreen Personalised Gifts</title>
+<meta name="description" content="Frequently asked questions about TootGreen personalised gifts — ordering, delivery, personalisation, returns and more.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/faq.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+.faq-list { display:flex; flex-direction:column; gap:0.8rem; margin-top:2rem; }
+.faq-item { border:1.5px solid var(--rule); border-radius:10px; overflow:hidden; transition:border-color 0.2s; }
+.faq-item.open { border-color:var(--g); }
+.faq-q { display:flex; align-items:center; justify-content:space-between; padding:1.2rem 1.5rem; cursor:pointer; background:var(--white); gap:1rem; }
+.faq-q-text { font-family:'Nunito',sans-serif; font-weight:800; font-size:1rem; color:var(--ink); }
+.faq-toggle { width:28px; height:28px; border-radius:50%; background:var(--g-lt); display:flex; align-items:center; justify-content:center; font-size:1rem; color:var(--g-dk); flex-shrink:0; transition:transform 0.25s,background 0.2s; }
+.faq-item.open .faq-toggle { transform:rotate(45deg); background:var(--g); color:#fff; }
+.faq-a { display:none; padding:0 1.5rem 1.2rem; font-size:0.92rem; color:var(--body); line-height:1.8; border-top:1px solid var(--rule); }
+.faq-item.open .faq-a { display:block; }
+.faq-category { font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--g-mid); margin:2.5rem 0 0.8rem; }
+.faq-category:first-child { margin-top:0; }
+</style>
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+
+<section class="section">
+  <div class="wrap" style="max-width:800px;">
+    <p class="eyebrow reveal">Got Questions?</p>
+    <h1 class="display display-lg reveal" style="margin-bottom:0.5rem;">Frequently Asked Questions</h1>
+    <p class="lead reveal" style="margin-bottom:0;">Everything you need to know about ordering from TootGreen.</p>
+
+    <div class="faq-list">
+
+      <p class="faq-category">Ordering & Personalisation</p>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How do I add personalisation to my order?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">When you click through to our Etsy listing, you'll see a personalisation box on the product page. Simply type in the name, message or wording you'd like and we'll take it from there. If you're unsure, you can also message us before ordering and we'll help.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Will I see a proof before my item is made?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">For standard listings we make them exactly as you've described in the personalisation box. For custom orders (anything bespoke or outside our standard range), we always send a digital proof via Etsy messages before we start making. You can request changes and we'll revise until you're happy.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I order something that isn't in your shop?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Absolutely — custom orders are one of our favourite things. Head to our <a href="/custom.html" style="color:var(--g-dk);font-weight:600;">Custom Orders page</a> and tell us what you have in mind. We can make mugs, badges, clothing, chocolate bars, teddies, slate boards, posters, cards and much more to your exact specifications.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I order in bulk for an event or business?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes! We love bulk orders for weddings, corporate events, leaving dos, school events and more. We offer discounts on larger quantities. Visit our <a href="/bulk.html" style="color:var(--g-dk);font-weight:600;">Bulk & Corporate Orders page</a> or message us to discuss your requirements.</div>
+      </div>
+
+      <p class="faq-category">Delivery</p>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How long will my order take?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">We dispatch most orders within 1–3 working days. Custom orders may take up to 4 working days. UK delivery is then typically 2–5 working days via Royal Mail. So from order to door, allow around 5–8 working days for standard orders.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Do you ship internationally?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Yes — we ship worldwide. European delivery typically takes 5–10 working days, and the rest of the world 7–14 working days. Delivery costs are shown at checkout on Etsy and vary by destination.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">I need this for a specific date — can you help?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Message us before ordering and let us know your deadline. We'll always do our best to accommodate urgent orders — just ask. We can also advise on the best delivery option for your timeframe.</div>
+      </div>
+
+      <p class="faq-category">Returns & Problems</p>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What if my item arrives damaged?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">We're really sorry if that happens — please message us within 14 days with a photo of the damage and we'll replace it or refund you straight away. No quibble, no fuss.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I return a personalised item?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Because personalised items are made specifically for you, we can't accept returns simply because you've changed your mind — this is standard for personalised goods under UK consumer law. However, if there's an error on our part or the item is faulty, we'll always put it right. See our full <a href="/delivery.html" style="color:var(--g-dk);font-weight:600;">Delivery & Returns policy</a>.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">I made a mistake in my personalisation — can I change it?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Message us as soon as possible via Etsy. If we haven't started making your item yet, we can change it at no cost. Once production has started, changes may not be possible, so please double-check your personalisation before ordering.</div>
+      </div>
+
+      <p class="faq-category">Payments & Security</p>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How do I pay?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">All standard purchases are made through Etsy, which accepts credit/debit cards, PayPal, Apple Pay, Google Pay and Etsy gift cards. For custom orders with an agreed price, we can arrange payment via PayPal or bank transfer.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is it safe to buy from you?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">Absolutely. We've been selling on Etsy since 2018 with over 800 sales and a 4.9-star rating. All payments go through Etsy's secure checkout, which is protected by Etsy's buyer guarantee. Your payment details are never seen by us directly.</div>
+      </div>
+
+      <p class="faq-category">Still Got Questions?</p>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">I can't find the answer I'm looking for</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">No problem at all — just get in touch! The quickest way is to <a id="faqEtsyMsg" href="#" rel="noopener noreferrer" style="color:var(--g-dk);font-weight:600;">message us on Etsy</a> and we'll get back to you the same day (Mon–Fri). You can also use our <a href="/contact.html" style="color:var(--g-dk);font-weight:600;">contact form</a>.</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:3rem;padding:2rem;background:var(--g-lt);border-radius:12px;border:1px solid rgba(46,125,50,0.2);text-align:center;" class="reveal">
+      <p style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem;color:var(--ink);margin-bottom:0.5rem;">Still not sure?</p>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;">We're friendly, we promise. Drop us a message and we'll help you out.</p>
+      <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-etsy" id="faqEtsyBtn" href="#" rel="noopener noreferrer">Message on Etsy</a>
+        <a class="btn btn-outline" href="/contact.html">Use Contact Form</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+const C = window.CONFIG, E = C.etsy;
+
+document.getElementById('faqEtsyMsg').href = E.messageUrl || E.shopUrl;
+document.getElementById('faqEtsyBtn').href = E.messageUrl || E.shopUrl;
+
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.08 }
+);
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+</script>
+
+
+
+
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

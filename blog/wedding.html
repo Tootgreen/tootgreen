@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script defer src="/_vercel/insights/script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding Favour Problem (and How to Actually Solve It) | TootGreen</title>
+<meta name="description" content="Most wedding favours end up on the table. Here's why, what to do instead, and the personalised options that guests actually take home.">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.tootgreen.co.uk/blog/wedding.html">
+<style>
+:root {
+  --g:#2e7d32; --g-dk:#1b5e20; --g-lt:#e8f5e9; --g-leaf:#66bb6a;
+  --ink:#0d2010; --body:#546e57; --muted:#7a9b7d; --rule:#ddeedd;
+  --bg:#f4f8f4; --white:#fff; --etsy:#f1641e;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{background:var(--white);color:var(--body);font-family:'DM Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+.article-hero{position:relative;height:500px;overflow:hidden;display:flex;align-items:flex-end;}
+.article-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.45);}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.1) 60%,transparent 100%);}
+.article-hero-content{position:relative;z-index:2;padding:3rem;width:100%;max-width:860px;margin:0 auto;}
+.article-hero-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.back-link{color:rgba(255,255,255,0.85);font-size:0.82rem;font-weight:700;display:flex;align-items:center;gap:0.4rem;}
+.back-link::before{content:'←';}
+.shop-link{color:rgba(255,255,255,0.85);font-size:0.78rem;font-weight:700;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);padding:0.4rem 0.9rem;border-radius:6px;}
+.article-cat{display:inline-block;color:#fff;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;padding:0.3rem 0.8rem;border-radius:100px;margin-bottom:0.8rem;}
+.article-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,2.9rem);color:#fff;line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-bottom:1rem;max-width:720px;}
+.article-meta{display:flex;gap:1.2rem;font-size:0.78rem;color:rgba(255,255,255,0.7);}
+.article-wrap{max-width:760px;margin:0 auto;padding:4rem 2rem;}
+.standfirst{font-family:'Lora',serif;font-style:italic;font-size:1.2rem;line-height:1.85;color:var(--ink);border-bottom:2px solid var(--g);padding-bottom:2rem;margin-bottom:2.5rem;}
+.article-body{font-family:'Lora',serif;font-size:1.02rem;line-height:1.9;color:#2a2a2a;}
+.article-body p{margin-bottom:1.4rem;}
+.article-body h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:var(--ink);margin:3rem 0 1rem;line-height:1.2;}
+.article-body a{color:var(--g-dk);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+.article-body a:hover{color:var(--g);}
+.article-body strong{font-weight:700;color:var(--ink);font-family:'DM Sans',sans-serif;}
+.article-body em{font-style:italic;}
+.article-body ul{margin:0.5rem 0 1.2rem 1.5rem;}
+.article-body ul li{margin-bottom:0.5rem;}
+.pullquote{font-family:'Lora',serif;font-style:italic;font-size:1.3rem;line-height:1.6;color:var(--g-dk);border-left:5px solid var(--g);padding:1.2rem 2rem;margin:3rem 0;background:var(--g-lt);border-radius:0 10px 10px 0;}
+.divider{text-align:center;margin:3rem 0;color:var(--g-leaf);font-size:1.1rem;letter-spacing:0.3em;}
+.product-card{display:grid;grid-template-columns:160px 1fr;border:2px solid var(--rule);border-radius:14px;overflow:hidden;margin:2.5rem 0;transition:all 0.22s;font-family:'DM Sans',sans-serif;background:var(--white);}
+.product-card:hover{border-color:var(--g);box-shadow:0 8px 32px rgba(46,125,50,0.12);transform:translateY(-2px);}
+.product-card-img{background:var(--g-lt);display:flex;align-items:center;justify-content:center;font-size:3rem;min-height:160px;}
+.product-card-body{padding:1.4rem;display:flex;flex-direction:column;border-left:1px solid var(--rule);}
+.product-card-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--g);margin-bottom:0.4rem;}
+.product-card-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.05rem;color:var(--ink);margin-bottom:0.3rem;line-height:1.3;}
+.product-card-desc{font-size:0.83rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;flex:1;}
+.product-card-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.product-card-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.3rem;color:var(--g-dk);}
+.product-card-btn{background:var(--etsy);color:#fff;font-size:0.78rem;font-weight:700;padding:0.55rem 1.1rem;border-radius:7px;text-decoration:none;transition:background 0.2s;white-space:nowrap;}
+.product-card-btn:hover{background:#d9581a;color:#fff;}
+.shop-story{margin-top:4rem;padding-top:2.5rem;border-top:3px solid var(--g);}
+.shop-story-head{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;color:var(--ink);margin-bottom:0.3rem;}
+.shop-story-sub{font-size:0.85rem;color:var(--muted);margin-bottom:1.8rem;}
+.shop-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.shop-story-card{border:1.5px solid var(--rule);border-radius:10px;overflow:hidden;text-decoration:none;transition:all 0.2s;display:flex;flex-direction:column;}
+.shop-story-card:hover{border-color:var(--g);transform:translateY(-2px);}
+.shop-story-img{height:130px;background:var(--g-lt);display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.shop-story-body{padding:0.8rem;}
+.shop-story-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:0.78rem;color:var(--ink);line-height:1.3;margin-bottom:0.3rem;}
+.shop-story-price{font-family:'Nunito',sans-serif;font-weight:900;font-size:0.95rem;color:var(--g-dk);}
+.article-cta{background:var(--g-lt);border-radius:16px;padding:2.5rem;text-align:center;margin-top:4rem;border:1px solid rgba(46,125,50,0.2);}
+.article-cta-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;color:var(--ink);margin-bottom:0.5rem;}
+.article-cta-sub{font-size:0.9rem;color:var(--muted);margin-bottom:1.5rem;}
+.btn{display:inline-flex;align-items:center;gap:0.4rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:700;padding:0.75rem 1.6rem;border-radius:8px;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none;}
+.btn-green{background:var(--g);color:#fff;margin-right:0.5rem;}
+.btn-green:hover{background:var(--g-dk);}
+.btn-outline{background:transparent;color:var(--ink);border:2px solid var(--rule);}
+.related{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--rule);}
+.related-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--ink);margin-bottom:1.2rem;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.related-card{background:var(--bg);border-radius:10px;padding:1rem;border:1.5px solid transparent;transition:all 0.2s;}
+.related-card:hover{border-color:var(--g);background:var(--white);}
+.related-card-cat{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;}
+.related-card-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:0.82rem;color:var(--ink);line-height:1.3;}
+@media(max-width:680px){
+  .article-hero{height:360px;}
+  .article-hero-content{padding:1.5rem;}
+  .product-card{grid-template-columns:1fr;}
+  .product-card-img{min-height:180px;}
+  .product-card-body{border-left:none;border-top:1px solid var(--rule);}
+  .shop-story-grid{grid-template-columns:1fr 1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .article-wrap{padding:2rem 1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="article-hero">
+  <img class="article-hero-img" src="/images/about_hero.png" alt="TootGreen — Personalised Gifts from Kent">
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <div class="article-hero-nav">
+      <a class="back-link" href="/blog.html">Back to the Blog</a>
+      <a class="shop-link" href="/shop.html">Visit the Shop →</a>
+    </div>
+    <span class="article-cat" style="background:#ad1457;">Weddings</span>
+    <h1 class="article-title">The Wedding Favour Problem (and How to Actually Solve It)</h1>
+    <div class="article-meta"><span>20 March 2025</span><span>8 min read</span><span>TootGreen</span></div>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <p class="standfirst">The wedding favour has had a complicated few centuries. It started as a genuine expression of gratitude from people who had enough money to express gratitude in sugar. Somewhere along the way it became a small bag of almonds that nobody wanted. We've helped hundreds of couples fix this. Here's what actually works.</p>
+
+  <div class="article-body">
+
+    <p>We're based in Kent, and we've been making personalised gifts since 2018. In that time we've helped a lot of people with their weddings — favours, of course, but also gifts for the wedding party, badges for the guests, personalised things for the couple to give each other. We've been to a few weddings ourselves over the years too, which means we've left our fair share of tiny bags of sugared almonds on tables across the county.</p>
+
+    <p>We say this not to be unkind about sugared almonds specifically, but to be honest about the fact that most wedding favours don't survive the evening. They're conceived as a gesture and received as an obligation. This is fixable. It just requires thinking about it slightly differently.</p>
+
+    <h3>A brief history of the wedding favour — why we do this at all</h3>
+
+    <p>The tradition dates to sixteenth century Europe, when aristocratic families presented their wedding guests with a small box called a bonbonnière — a beautifully crafted container filled with sugar, which was then an expensive luxury available only to the wealthy. Giving guests sugar was a genuine statement: you are important enough that we spent real money on you. It was a thank you with weight to it.</p>
+
+    <p>By the Victorian era the tradition had filtered down through society and become more modest. The sugar almond — the dragée — became the standard favour: five of them, representing health, wealth, happiness, long life, and fertility. Each one carried a specific meaning. Guests knew what they were receiving and what it meant.</p>
+
+    <p>Somewhere in the late twentieth century, the wedding favour became an item on a checklist rather than a thought. It was on the list between "buttonholes" and "table plan." And because it was an obligation rather than a considered gift, it stopped meaning anything. The result: millions of tiny bags of sugared almonds, left on tables across Britain every weekend from April to September, year after year, nobody quite sure why they keep being made.</p>
+
+    <p>The good news is that the bar is genuinely low. Standing out from a bag of almonds is not difficult.</p>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <h3>What actually gets taken home</h3>
+
+    <p>After years of making wedding favours, we've noticed a clear pattern. The favours that make it into handbags and jacket pockets at the end of the night fall into exactly two categories.</p>
+
+    <p>The first: things people can eat on the night. Not things they might eat later, not things they'll definitely eat at home — things they actively want to eat right now, tonight, at the table. The bar for this is higher than it sounds. It needs to be good enough that people actually want it.</p>
+
+    <p>The second: things personal enough that leaving them feels wrong. If a favour has someone's name on it, or the couple's names, or something specific enough to feel chosen rather than distributed — leaving it on the table feels slightly rude. Like leaving a personalised gift in the bag, which nobody does.</p>
+
+    <p>Everything else gets left. The seed packets. The mini bottles of something that tastes a bit medicinal. The small candles. The luggage tags. All perfectly nice. All still on tables at midnight.</p>
+
+    <blockquote class="pullquote">"The best wedding favours feel chosen for the people receiving them, not ticked off a list. That difference is visible the moment your guests pick them up."</blockquote>
+
+    <h3>The chocolate bar — our most successful wedding favour by some distance</h3>
+
+    <p>A full-size chocolate bar with a personalised wrapper. The couple's names, the date, whatever message they want — romantic, funny, both, neither. It gets picked up because it's actual chocolate. It gets read because it has names on it. The wrapper sometimes gets kept.</p>
+
+    <p>At £3.79 each with bulk discounts available, it costs less than most alternatives and consistently outperforms them. We've made thousands of these for weddings. The response is always the same: people eat them at the table, show the wrapper to whoever is sitting next to them, and tuck the wrapper away if they've had a good time.</p>
+
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-img">🍫</div>
+    <div class="product-card-body">
+      <div class="product-card-label">Best Seller · Wedding Favours · From £3.79 each</div>
+      <div class="product-card-name">Custom Wedding Chocolate Bar</div>
+      <div class="product-card-desc">Full-size bar, personalised wrapper with the couple's names and date. People actually eat these, which means they actually pick them up, which means they see your names every time they reach for it.</div>
+      <div class="product-card-footer">
+        <div class="product-card-price">From £3.79</div>
+        <a class="product-card-btn" href="https://www.etsy.com/uk/listing/1017865243" rel="noopener noreferrer">Buy on Etsy →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <h3>The badge approach — something that works on the day itself</h3>
+
+    <p>If you want something interactive — something that makes the day itself better rather than just providing a token to take home — personalised badges are brilliant. Each guest gets a badge with their name, their table name, or their specific role: "Bride's Mate", "Proud Dad", "Here for the Cake", "Officially Off the Market". They wear them. They create conversations between people who don't know each other. They become part of the day rather than an item collected on the way in and abandoned on the way out.</p>
+
+    <p>We've seen these work particularly well at weddings where not everyone knows each other — when the two families haven't met yet, or when colleagues are mixed in with old friends. A badge gives people something to talk about immediately. "Here for the Cake" is a conversation opener. So is "Proud Dad" and "Last one standing" and most of the others we've made over the years.</p>
+
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-img">📌</div>
+    <div class="product-card-body">
+      <div class="product-card-label">Interactive · Ice Breaker · From £2.50 each in bulk</div>
+      <div class="product-card-name">Personalised Wedding Badge</div>
+      <div class="product-card-desc">Each guest gets their name, their table name, or their role. "Here for the Cake" is funnier than it sounds when thirty people are wearing it. Creates conversations. Gets worn all day.</div>
+      <div class="product-card-footer">
+        <div class="product-card-price">From £2.50</div>
+        <a class="product-card-btn" href="https://www.etsy.com/uk/listing/1161280119" rel="noopener noreferrer">Buy on Etsy →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <h3>For smaller weddings — the mug option</h3>
+
+    <p>If your guest list is under fifty people and you want something more substantial — something that says "we thought about you specifically" rather than "we thought about guests as a category" — a personalised mug for each guest is worth considering.</p>
+
+    <p>We can do a single design for all guests or personalise each one individually. The individual personalisation is more work and costs more, but it also communicates something the single design doesn't: you knew who was coming and you thought about each of them. That's a level of care that most wedding favours don't achieve.</p>
+
+    <p>For close family particularly — parents, siblings, the people who actually matter most at the wedding — a personalised mug that acknowledges who they are specifically is a different kind of favour entirely. It's closer to a thank you gift than a favour.</p>
+
+    <p>Our paired mug sets work especially well for couples in the wedding party — something that acknowledges the relationship rather than just the individual.</p>
+
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-img">💑</div>
+    <div class="product-card-body">
+      <div class="product-card-label">For Couples · Wedding Party · Close Family</div>
+      <div class="product-card-name">Big Spoon, Little Spoon — Personalised Mug Set</div>
+      <div class="product-card-desc">Two mugs, one gift, acknowledges the relationship not just the individuals. Works beautifully for couples in the wedding party who you want to give something more personal than a standard favour.</div>
+      <div class="product-card-footer">
+        <div class="product-card-price">£23.35</div>
+        <a class="product-card-btn" href="https://www.etsy.com/uk/listing/977488165" rel="noopener noreferrer">Buy on Etsy →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <h3>The one for the little ones at the wedding</h3>
+
+    <p>If there are young children at your wedding — or if the couple themselves have a young child — our personalised baby vest creates a moment that nobody forgets. It's not a traditional favour. It's the kind of gift that gets a reaction, gets photographed, and ends up in the wedding album. If the couple aren't yet married at the time of the wedding (it happens; sometimes you already have children before you get around to the official bit), "Will You Marry My Mummy?" arriving on a baby causes chaos in the best possible way.</p>
+
+  </div>
+
+  <div class="product-card">
+    <div class="product-card-img">👶</div>
+    <div class="product-card-body">
+      <div class="product-card-label">For Weddings with Little Ones · Memorable Moment</div>
+      <div class="product-card-name">Will You Marry My Mummy? — Personalised Baby Vest</div>
+      <div class="product-card-desc">Not a traditional favour, but one of the most memorable things that can happen at a wedding. Gets photographed. Creates a moment. Ends up in the album alongside the official photos.</div>
+      <div class="product-card-footer">
+        <div class="product-card-price">£19.34</div>
+        <a class="product-card-btn" href="https://www.etsy.com/uk/listing/1177349067" rel="noopener noreferrer">Buy on Etsy →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <h3>What to avoid — the honest version</h3>
+
+    <p>Anything that requires guests to do something later — plant the seeds, use the recipe, make the candle — gets forgotten. We say this having received several of these ourselves over the years. The seeds are in a kitchen drawer. They have been in the kitchen drawer for three years. We feel mildly guilty about this every time we see them.</p>
+
+    <p>Anything consumable that isn't high quality gets left. The miniature bottles of prosecco that cost pennies and taste like it. The tiny jars of jam that nobody opens. Quality matters more than quantity when it comes to edible favours.</p>
+
+    <p>Anything too generic — just the date, no personalisation, no sense that someone thought about who was going to receive it — reads as an afterthought even when it isn't. The best favours feel chosen. The date is a fact. The couple's names on a chocolate bar, or a badge with the specific table name, or a mug with someone's actual name on it — that's a choice.</p>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <h3>Planning, pricing, and not leaving it to the week before</h3>
+
+    <p>We offer bulk discounts because we want personalised favours to be accessible without requiring a remortgage. Ten to 24 items: 10% off. Twenty-five to 49 items: 15% off. Fifty or more: 20% off — for larger orders we'd ask you to contact us directly so we can talk through the specifics.</p>
+
+    <p>We'd recommend getting in touch at least three to four weeks before the date. Not because we can't work faster — we often can — but because proofs take time, approvals take time, and weddings have enough things that can go slightly sideways without adding favour chaos to the list.</p>
+
+    <p><a href="/bulk.html">Get a bulk quote here</a>, or <a href="/contact.html">message us directly</a> and we'll talk through what would work for your guest list and budget. We've done this before. We will help you figure it out without making you feel like you should have known all this already.</p>
+
+  </div>
+
+  <div class="shop-story">
+    <div class="shop-story-head">Shop this story</div>
+    <div class="shop-story-sub">Everything mentioned in this post — find it all on our Etsy shop.</div>
+    <div class="shop-story-grid">
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/1017865243" rel="noopener noreferrer">
+        <div class="shop-story-img">🍫</div>
+        <div class="shop-story-body"><div class="shop-story-name">Custom Wedding Chocolate Bar</div><div class="shop-story-price">From £3.79</div></div>
+      </a>
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/1161280119" rel="noopener noreferrer">
+        <div class="shop-story-img">📌</div>
+        <div class="shop-story-body"><div class="shop-story-name">Personalised Wedding Badge</div><div class="shop-story-price">From £2.50</div></div>
+      </a>
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/977488165" rel="noopener noreferrer">
+        <div class="shop-story-img">💑</div>
+        <div class="shop-story-body"><div class="shop-story-name">Big Spoon Little Spoon Mug Set</div><div class="shop-story-price">£23.35</div></div>
+      </a>
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/1177349067" rel="noopener noreferrer">
+        <div class="shop-story-img">👶</div>
+        <div class="shop-story-body"><div class="shop-story-name">Will You Marry My Mummy Baby Vest</div><div class="shop-story-price">£19.34</div></div>
+      </a>
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/978883151" rel="noopener noreferrer">
+        <div class="shop-story-img">☕</div>
+        <div class="shop-story-body"><div class="shop-story-name">Awesome Friend Mug</div><div class="shop-story-price">£14.34</div></div>
+      </a>
+      <a class="shop-story-card" href="https://www.etsy.com/uk/listing/963528966" rel="noopener noreferrer">
+        <div class="shop-story-img">💕</div>
+        <div class="shop-story-body"><div class="shop-story-name">Love You More Mug Set</div><div class="shop-story-price">£21.80</div></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <div class="article-cta-title">Planning a wedding? We can help.</div>
+    <div class="article-cta-sub">Get a bulk quote or message us directly — we'll work out what makes sense for your guest list and budget.</div>
+    <a class="btn btn-green" href="/bulk.html">Get a Bulk Quote</a>
+    <a class="btn btn-outline" href="/contact.html">Message Us</a>
+  </div>
+
+  <div class="related">
+    <div class="related-title">More from the blog</div>
+    <div class="related-grid">
+      <div class="related-card">
+        <div class="related-card-cat" style="color:#2e7d32;">Gift Ideas</div>
+        <div class="related-card-title">Why a Mug Is the Best Birthday Gift (If You Do It Right)</div>
+      </div>
+      <div class="related-card">
+        <div class="related-card-cat" style="color:#ad1457;">Occasions</div>
+        <div class="related-card-title">Anniversary Gifts That Mark the Occasion Properly</div>
+      </div>
+      <div class="related-card">
+        <div class="related-card-cat" style="color:#00838f;">New Baby</div>
+        <div class="related-card-title">New Baby Gifts That Parents Will Still Have in Ten Years</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

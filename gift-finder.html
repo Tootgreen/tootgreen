@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<title>Gift Finder | TootGreen — Find the Perfect Personalised Gift</title>
+<meta name="description" content="Not sure what to get? Answer 3 quick questions and we'll find the perfect personalised gift for your person.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/gift-finder.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<style>
+.quiz-wrap { max-width:680px; margin:0 auto; padding:4rem 2rem; }
+.quiz-step { display:none; }
+.quiz-step.active { display:block; animation:pageIn 0.35s ease both; }
+@keyframes pageIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.quiz-q { font-family:'Nunito',sans-serif; font-weight:900; font-size:1.8rem; color:var(--ink); margin-bottom:0.5rem; line-height:1.2; }
+.quiz-sub { font-size:0.95rem; color:var(--muted); margin-bottom:2rem; }
+.quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
+.quiz-option {
+  padding:1.2rem 1rem; border:2px solid var(--rule); border-radius:12px;
+  background:var(--white); cursor:pointer; text-align:left;
+  transition:all 0.18s; font-family:inherit;
+}
+.quiz-option:hover { border-color:var(--g); background:var(--g-lt); transform:translateY(-2px); }
+.quiz-option.selected { border-color:var(--g-dk); background:var(--g-lt); }
+.quiz-option-icon { font-size:1.8rem; margin-bottom:0.5rem; display:block; }
+.quiz-option-label { font-family:'Nunito',sans-serif; font-weight:800; font-size:0.95rem; color:var(--ink); display:block; }
+.quiz-option-desc { font-size:0.78rem; color:var(--muted); margin-top:0.2rem; display:block; }
+.quiz-progress { display:flex; gap:0.4rem; margin-bottom:2.5rem; }
+.quiz-pip { flex:1; height:4px; background:var(--rule); border-radius:100px; transition:background 0.3s; }
+.quiz-pip.done { background:var(--g); }
+.quiz-results { display:none; }
+.quiz-results.show { display:block; animation:pageIn 0.35s ease both; }
+.result-card { background:var(--white); border:2px solid var(--g); border-radius:14px; padding:1.5rem; display:flex; gap:1.2rem; align-items:flex-start; margin-bottom:1rem; transition:transform 0.2s; }
+.result-card:hover { transform:translateY(-2px); }
+.result-img { width:80px; height:80px; border-radius:8px; background:var(--g-lt); flex-shrink:0; overflow:hidden; }
+.result-img img { width:100%; height:100%; object-fit:cover; }
+.result-name { font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; color:var(--ink); margin-bottom:0.2rem; }
+.result-price { font-family:'Nunito',sans-serif; font-weight:900; color:var(--g-dk); font-size:0.95rem; margin-bottom:0.6rem; }
+@media(max-width:580px) { .quiz-options { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+  <div class="quiz-wrap">
+    <div style="text-align:center; margin-bottom:2.5rem;">
+      <p class="eyebrow">Gift Finder</p>
+      <h1 class="display display-lg" style="margin-bottom:0.5rem;">Find the perfect gift 🎁</h1>
+      <p style="color:var(--muted); font-size:0.95rem;">Answer 3 quick questions and we'll pick it for you.</p>
+    </div>
+
+    <div class="quiz-progress">
+      <div class="quiz-pip done" id="pip1"></div>
+      <div class="quiz-pip" id="pip2"></div>
+      <div class="quiz-pip" id="pip3"></div>
+    </div>
+
+    <div class="quiz-step active" id="step1">
+      <div class="quiz-q">What's the occasion?</div>
+      <div class="quiz-sub">Pick the one that fits best</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="pick(1,'Birthday')"><span class="quiz-option-icon">🎂</span><span class="quiz-option-label">Birthday</span></button>
+        <button class="quiz-option" onclick="pick(1,'Anniversary')"><span class="quiz-option-icon">💑</span><span class="quiz-option-label">Anniversary</span></button>
+        <button class="quiz-option" onclick="pick(1,'Wedding')"><span class="quiz-option-icon">💍</span><span class="quiz-option-label">Wedding</span></button>
+        <button class="quiz-option" onclick="pick(1,'NewBaby')"><span class="quiz-option-icon">🍼</span><span class="quiz-option-label">New Baby</span></button>
+        <button class="quiz-option" onclick="pick(1,'ThankYou')"><span class="quiz-option-icon">🙏</span><span class="quiz-option-label">Thank You</span></button>
+        <button class="quiz-option" onclick="pick(1,'LeavingDo')"><span class="quiz-option-icon">👋</span><span class="quiz-option-label">Leaving Do</span></button>
+        <button class="quiz-option" onclick="pick(1,'Christmas')"><span class="quiz-option-icon">🎄</span><span class="quiz-option-label">Christmas</span></button>
+        <button class="quiz-option" onclick="pick(1,'JustBecause')"><span class="quiz-option-icon">💚</span><span class="quiz-option-label">Just Because</span></button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="step2">
+      <div class="quiz-q">What's your budget?</div>
+      <div class="quiz-sub">We've got something for every price point</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="pick(2,'u10')"><span class="quiz-option-icon">🪙</span><span class="quiz-option-label">Under £10</span><span class="quiz-option-desc">Stocking fillers &amp; fun extras</span></button>
+        <button class="quiz-option" onclick="pick(2,'u20')"><span class="quiz-option-icon">💷</span><span class="quiz-option-label">Under £20</span><span class="quiz-option-desc">Most popular range</span></button>
+        <button class="quiz-option" onclick="pick(2,'u35')"><span class="quiz-option-icon">🎀</span><span class="quiz-option-label">Under £35</span><span class="quiz-option-desc">Special occasion gifts</span></button>
+        <button class="quiz-option" onclick="pick(2,'any')"><span class="quiz-option-icon">✨</span><span class="quiz-option-label">No limit</span><span class="quiz-option-desc">Show me everything</span></button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="step3">
+      <div class="quiz-q">What's their vibe?</div>
+      <div class="quiz-sub">Pick what suits them best</div>
+      <div class="quiz-options">
+        <button class="quiz-option" onclick="pick(3,'funny')"><span class="quiz-option-icon">😂</span><span class="quiz-option-label">Funny &amp; Rude</span><span class="quiz-option-desc">They can take a joke</span></button>
+        <button class="quiz-option" onclick="pick(3,'sweet')"><span class="quiz-option-icon">🥰</span><span class="quiz-option-label">Sweet &amp; Sentimental</span><span class="quiz-option-desc">Heartfelt &amp; personal</span></button>
+        <button class="quiz-option" onclick="pick(3,'practical')"><span class="quiz-option-icon">☕</span><span class="quiz-option-label">Practical</span><span class="quiz-option-desc">Something they'll actually use</span></button>
+        <button class="quiz-option" onclick="pick(3,'unique')"><span class="quiz-option-icon">🦄</span><span class="quiz-option-label">Unique &amp; Unusual</span><span class="quiz-option-desc">Nothing boring</span></button>
+      </div>
+    </div>
+
+    <div class="quiz-results" id="results">
+      <div style="text-align:center; margin-bottom:2rem;">
+        <div style="font-size:3rem; margin-bottom:0.8rem;">🎉</div>
+        <h2 class="display display-lg" style="margin-bottom:0.5rem;">Perfect matches!</h2>
+        <p style="color:var(--muted);">Based on your answers, here are our top picks.</p>
+      </div>
+      <div id="resultsList"></div>
+      <div style="text-align:center; margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-green" href="/shop.html" id="resultsShopLink">See all matching gifts</a>
+        <button class="btn btn-outline" onclick="restart()">Start again</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+const C = window.CONFIG, E = C.etsy, A = C.amazon;
+const answers = { occ: null, budget: null, vibe: null };
+
+function pick(step, value) {
+  if (step === 1) answers.occ = value;
+  if (step === 2) answers.budget = value;
+  if (step === 3) {
+    answers.vibe = value;
+    showResults();
+    return;
+  }
+
+  document.getElementById('step' + step).classList.remove('active');
+  document.getElementById('step' + (step + 1)).classList.add('active');
+  document.getElementById('pip' + (step + 1)).classList.add('done');
+}
+
+function showResults() {
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('pip3').classList.add('done');
+
+  const maxPrice = answers.budget === 'u10' ? 10
+    : answers.budget === 'u20' ? 20
+    : answers.budget === 'u35' ? 35
+    : 9999;
+
+  const scored = C.products.map(p => {
+    let score = 0;
+    if (p.occ && p.occ.includes(answers.occ)) score += 3;
+    if (p.price <= maxPrice) score += 2;
+
+    const name = p.name.toLowerCase();
+
+    if (answers.vibe === 'funny' && (name.includes('idgaf') || name.includes('silly') || name.includes('oap') || name.includes('rude') || p.cat === 'Badges')) score += 2;
+    if (answers.vibe === 'sweet' && (name.includes('love') || name.includes('friend') || name.includes('awesome') || name.includes('nan') || p.cat === 'Teddies')) score += 2;
+    if (answers.vibe === 'practical' && (p.cat === 'Mugs' || p.cat === 'Slate' || p.cat === 'Clothing')) score += 2;
+    if (answers.vibe === 'unique' && (p.cat === 'Other' || p.cat === 'WallDeco' || p.cat === 'Posters')) score += 2;
+    if (p.badge === 'Best Seller' || p.badge === 'Popular') score += 1;
+
+    return { ...p, score };
+  }).filter(p => p.score > 0 && p.price <= maxPrice)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4);
+
+  const list = document.getElementById('resultsList');
+
+  if (!scored.length) {
+    list.innerHTML = `<p style="text-align:center;color:var(--muted);padding:2rem;">No exact matches — but our full shop has something for everyone!</p>`;
+  } else {
+    list.innerHTML = scored.map(p => `
+      <div class="result-card">
+        <div class="result-img"><img src="${p.img}" alt="${p.name}" onerror="this.parentElement.style.background='var(--g-lt)'"></div>
+        <div style="flex:1;">
+          <div class="result-name">${p.name}</div>
+          <div class="result-price">£${Number(p.price).toFixed(2)}</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <a class="btn btn-etsy" href="${p.url}" rel="noopener noreferrer" style="padding:0.5rem 1rem;font-size:0.78rem;">🛍 Buy on Etsy</a>
+            ${A.enabled && p.amz ? `<a class="btn btn-outline" href="${p.amz}" rel="noopener noreferrer" style="padding:0.5rem 1rem;font-size:0.78rem;">📦 Amazon</a>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('resultsShopLink').href = `/shop.html?occ=${answers.occ}`;
+  document.getElementById('results').classList.add('show');
+}
+
+function restart() {
+  answers.occ = null;
+  answers.budget = null;
+  answers.vibe = null;
+
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('step1').classList.add('active');
+  document.querySelectorAll('.quiz-pip').forEach((p, i) => p.classList.toggle('done', i === 0));
+}
+</script>
+
+
+
+
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>

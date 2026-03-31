@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<title>Shop All Personalised Gifts | TootGreen</title>
+<meta name="description" content="Browse TootGreen's full range of personalised gifts — mugs, badges, clothing, cards, posters, wall art and more. All made to order in the UK.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/shop.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+
+<div class="shop-header">
+  <div class="wrap">
+    <p class="eyebrow" id="shopEyebrow"></p>
+    <h1 class="display display-lg" style="margin-bottom:0.4rem;">All Products</h1>
+    <p class="muted-text" id="shopSubhead"></p>
+    <div class="sync-banner" id="syncBanner"></div>
+
+    <div class="occ-filter-wrap">
+      <span class="occ-label">Shop for:</span>
+      <div class="occ-chips" id="occChips"></div>
+    </div>
+
+    <div class="price-filter-wrap">
+      <span class="occ-label">Budget:</span>
+      <div class="occ-chips" id="priceChips"></div>
+    </div>
+
+    <div class="shop-controls">
+      <div class="search-box">
+        <span style="color:var(--muted)">🔍</span>
+        <input type="text" id="shopSearch" placeholder="Search products…" oninput="renderShop()">
+      </div>
+      <div class="filter-chips" id="filterChips"></div>
+      <select class="sort-sel" id="shopSort" onchange="renderShop()">
+        <option value="default">Sort: Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name">Name: A–Z</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div id="hotRightNowWrap" style="display:none; background:var(--g-lt); border-bottom:1px solid var(--rule); padding:1rem 0;">
+  <div class="wrap">
+    <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+      <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--g-dk);">🔥 Popular right now:</span>
+      <div id="hotRightNow" style="display:flex; gap:0.5rem; flex-wrap:wrap;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="shop-grid-wrap">
+  <div class="wrap">
+    <div class="results-meta" id="shopMeta"></div>
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</div>
+
+<div id="recentlyViewedSection" style="display:none; padding:3rem 0; border-top:1px solid var(--rule);">
+  <div class="wrap">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:1.5rem;">
+      <div><p class="eyebrow">Your History</p><h2 class="display display-lg" style="font-size:1.5rem;">Recently Viewed</h2></div>
+      <button onclick="clearRecent()" style="font-size:0.75rem; color:var(--muted); cursor:pointer; background:none; border:none; font-family:inherit;">Clear</button>
+    </div>
+    <div class="feat-grid" id="recentlyViewedGrid"></div>
+  </div>
+</div>
+
+<div id="shareModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:500; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:14px; padding:2rem; max-width:340px; width:90%; position:relative;">
+    <button onclick="closeShare()" style="position:absolute; top:1rem; right:1rem; font-size:1.2rem; cursor:pointer; background:none; border:none; color:var(--muted);">✕</button>
+    <h3 style="font-family:'Nunito',sans-serif; font-weight:900; font-size:1.2rem; margin-bottom:0.4rem;" id="shareModalTitle"></h3>
+    <p style="font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;">Share this gift idea with someone special</p>
+    <div style="display:flex; flex-direction:column; gap:0.6rem;">
+      <a id="shareWhatsapp" href="#" rel="noopener noreferrer" class="share-btn share-wa">💬 Share on WhatsApp</a>
+      <a id="shareFacebook" href="#" rel="noopener noreferrer" class="share-btn share-fb">📘 Share on Facebook</a>
+      <a id="shareTwitter" href="#" rel="noopener noreferrer" class="share-btn share-tw">🐦 Share on X / Twitter</a>
+      <button id="shareCopy" onclick="copyShareLink()" class="share-btn share-copy">🔗 Copy link</button>
+    </div>
+    <p id="shareCopied" style="display:none; text-align:center; font-size:0.78rem; color:var(--g-dk); margin-top:0.8rem; font-weight:600;">✅ Link copied!</p>
+  </div>
+</div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+const C = window.CONFIG, E = C.etsy, A = C.amazon, S = C.stats;
+let liveProducts = null;
+let currentShareUrl = '';
+
+// Shop header
+document.getElementById('shopEyebrow').textContent = C.business.name;
+document.getElementById('shopSubhead').textContent = S.products + ' personalised gifts — all made to order in the UK';
+
+// Image placeholder
+const catIcons = { Mugs:'☕', Badges:'📌', Clothing:'👕', Slate:'🪨', Other:'🎁' };
+
+function handleImgError(img) {
+  if (!img || !img.parentElement) return;
+  const src = (img.getAttribute('src') || '').split('/').pop().replace(/\.(jpg|png|webp)/, '');
+  let icon = '🎁';
+  try {
+    const cat = img.closest('.product-card')?.querySelector('.product-type')?.textContent.split('·')[0].trim();
+    icon = catIcons[cat] || '🎁';
+  } catch (e) {}
+  const ph = document.createElement('div');
+  ph.className = 'img-placeholder';
+  ph.innerHTML = `<div class="ph-icon">${icon}</div><div class="ph-label">${src || 'product-image'}.jpg</div><div class="ph-hint">Replace with product photo</div>`;
+  img.onerror = null;
+  if (img.parentElement) img.parentElement.replaceChild(ph, img);
+}
+
+// Delivery date
+function deliveryDate() {
+  const now = new Date();
+  const hour = now.getHours();
+  let dispatch = new Date(now);
+  const day = dispatch.getDay();
+
+  if (hour >= 14 || day === 0 || day === 6) {
+    dispatch.setDate(dispatch.getDate() + (day === 5 ? 3 : day === 6 ? 2 : 1));
+  }
+
+  let delivery = new Date(dispatch);
+  let added = 0;
+  while (added < 3) {
+    delivery.setDate(delivery.getDate() + 1);
+    if (delivery.getDay() !== 0 && delivery.getDay() !== 6) added++;
+  }
+
+  return delivery.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short' });
+}
+
+// Share
+let shareProduct = null;
+
+function openShare(p) {
+  shareProduct = p;
+  const url = p.url;
+  const text = `Check out this personalised gift from TootGreen: ${p.name}`;
+  currentShareUrl = url;
+  document.getElementById('shareModalTitle').textContent = p.name;
+  document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+  document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  document.getElementById('shareCopied').style.display = 'none';
+  document.getElementById('shareModal').style.display = 'flex';
+}
+
+function closeShare() {
+  document.getElementById('shareModal').style.display = 'none';
+}
+
+async function copyShareLink() {
+  try { await navigator.clipboard.writeText(currentShareUrl); } catch (e) {}
+  document.getElementById('shareCopied').style.display = 'block';
+}
+
+document.getElementById('shareModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeShare();
+});
+
+// Recently viewed
+const MAX_RECENT = 4;
+
+function getRecent() {
+  try {
+    return JSON.parse(sessionStorage.getItem('tg_recent') || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function addRecent(p) {
+  let recent = getRecent().filter(r => r.id !== p.id);
+  recent.unshift({ id:p.id, name:p.name, cat:p.cat, price:p.price, img:p.img, url:p.url, amz:p.amz || null, badge:p.badge || null });
+  if (recent.length > MAX_RECENT) recent = recent.slice(0, MAX_RECENT);
+  sessionStorage.setItem('tg_recent', JSON.stringify(recent));
+  renderRecent();
+}
+
+function clearRecent() {
+  sessionStorage.removeItem('tg_recent');
+  document.getElementById('recentlyViewedSection').style.display = 'none';
+}
+
+function renderRecent() {
+  const recent = getRecent();
+  const section = document.getElementById('recentlyViewedSection');
+  const grid = document.getElementById('recentlyViewedGrid');
+
+  if (!recent.length) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  grid.innerHTML = recent.map(p => productCard(p, false)).join('');
+
+  setTimeout(() => {
+    grid.querySelectorAll('.product-img img').forEach(img => {
+      img.onerror = function(){ handleImgError(this); };
+      if (img.complete && img.naturalWidth === 0) handleImgError(img);
+    });
+  }, 50);
+}
+
+// Hot products
+function showHotProducts(products) {
+  if (!products.length) return;
+
+  const weighted = [...products].sort((a, b) => {
+    const score = p => p.badge === 'Best Seller' ? 3 : p.badge === 'Popular' ? 2 : p.badge ? 1 : 0;
+    return score(b) - score(a);
+  }).slice(0, 6);
+
+  const pick = weighted.slice(0, 4);
+  const wrap = document.getElementById('hotRightNow');
+  const outerWrap = document.getElementById('hotRightNowWrap');
+
+  wrap.innerHTML = pick.map(p => `
+    <button onclick="scrollToProduct(${p.id})" style="background:var(--white); border:1.5px solid var(--rule); border-radius:100px; padding:0.3rem 0.8rem; font-size:0.72rem; font-weight:600; color:var(--ink); cursor:pointer; font-family:inherit; transition:all 0.18s;" onmouseover="this.style.borderColor='var(--g)'" onmouseout="this.style.borderColor='var(--rule)'">
+      ${p.name.length > 28 ? p.name.slice(0,28) + '…' : p.name}
+    </button>
+  `).join('');
+
+  outerWrap.style.display = 'block';
+}
+
+function scrollToProduct(id) {
+  const card = document.querySelector(`[data-product-id="${id}"]`);
+  if (card) card.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+
+// Product card
+function productCard(p, trackView = true) {
+  const badge = p.badge ? `<span class="tag tag-green" style="position:absolute;top:.6rem;left:.6rem;">${p.badge}</span>` : '';
+  const amzUrl = p.amz || (A.enabled ? A.searchUrl : null);
+  const amzBtn = (A.enabled && amzUrl) ? `<a class="buy-btn buy-amz" href="${amzUrl}" rel="noopener noreferrer"><span class="buy-icon">📦</span><span class="buy-label">Buy on<strong>Amazon</strong></span></a>` : '';
+  const cols = amzBtn ? '1fr 1fr' : '1fr';
+  const delivBy = deliveryDate();
+  const trackAttr = trackView ? `data-product-id="${p.id}" onclick="addRecent(${JSON.stringify(p).replace(/"/g,'&quot;')})"` : '';
+
+  return `<div class="product-card" ${trackAttr}>
+    <div class="product-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="handleImgError(this)">
+      ${badge}
+      <button class="share-trigger" onclick="event.stopPropagation();openShare(${JSON.stringify(p).replace(/"/g,'&quot;')})" title="Share this product">↗</button>
+    </div>
+    <div class="product-body">
+      <div class="product-name">${p.name}</div>
+      <div class="product-type">${p.cat} · Personalised</div>
+      <div class="delivery-est">📦 Get it by <strong>${delivBy}</strong></div>
+      <div class="product-foot"><div class="product-price">£${Number(p.price).toFixed(2)}</div><div class="product-stars"><span class="s">★★★★★</span> ${S.rating}</div></div>
+      <div class="product-buy-row" style="grid-template-columns:${cols}">
+        <a class="buy-btn buy-etsy" href="${p.url}" rel="noopener noreferrer" onclick="event.stopPropagation()"><span class="buy-icon">🛍</span><span class="buy-label">Buy on<strong>Etsy</strong></span></a>
+        ${amzBtn ? amzBtn.replace('rel="noopener noreferrer"','rel="noopener noreferrer" onclick="event.stopPropagation()"') : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function getProducts() {
+  return liveProducts || C.products;
+}
+
+// Filters
+const occs = [
+  { key:"Birthday", label:"🎂 Birthday" },
+  { key:"Anniversary", label:"💑 Anniversary" },
+  { key:"Wedding", label:"💍 Wedding" },
+  { key:"NewBaby", label:"🍼 New Baby" },
+  { key:"Christmas", label:"🎄 Christmas" },
+  { key:"ThankYou", label:"🙏 Thank You" },
+  { key:"LeavingDo", label:"👋 Leaving Do" },
+  { key:"JustBecause", label:"💚 Just Because" },
+];
+
+const prices = [
+  { key:"u5", label:"Under £5", min:0, max:5 },
+  { key:"u10", label:"Under £10", min:0, max:10 },
+  { key:"u20", label:"Under £20", min:0, max:20 },
+  { key:"u35", label:"Under £35", min:0, max:35 },
+  { key:"o35", label:"£35+", min:35, max:9999 },
+];
+
+let activeOcc = 'All';
+let activePrice = 'All';
+const cats = ["All","Mugs","Badges","Clothing","Posters","Cards","WallDeco","Slate","Teddies","Cushions","Other"];
+let activeCat = 'All';
+
+function buildOccChips() {
+  const wrap = document.getElementById('occChips');
+  if (!wrap || wrap.children.length) return;
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'occ-chip on';
+  allBtn.dataset.occ = 'All';
+  allBtn.textContent = 'All occasions';
+  allBtn.onclick = () => { activeOcc = 'All'; updateOccChips(); renderShop(); };
+  wrap.appendChild(allBtn);
+
+  occs.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'occ-chip';
+    btn.dataset.occ = o.key;
+    btn.textContent = o.label;
+    btn.onclick = () => { activeOcc = o.key; updateOccChips(); renderShop(); };
+    wrap.appendChild(btn);
+  });
+}
+
+function updateOccChips() {
+  document.querySelectorAll('.occ-chip').forEach(c => c.classList.toggle('on', c.dataset.occ === activeOcc));
+}
+
+function buildPriceChips() {
+  const wrap = document.getElementById('priceChips');
+  if (!wrap || wrap.children.length) return;
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'occ-chip on';
+  allBtn.dataset.price = 'All';
+  allBtn.textContent = 'Any price';
+  allBtn.onclick = () => { activePrice = 'All'; updatePriceChips(); renderShop(); };
+  wrap.appendChild(allBtn);
+
+  prices.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'occ-chip';
+    btn.dataset.price = p.key;
+    btn.textContent = p.label;
+    btn.onclick = () => { activePrice = p.key; updatePriceChips(); renderShop(); };
+    wrap.appendChild(btn);
+  });
+}
+
+function updatePriceChips() {
+  document.querySelectorAll('[data-price]').forEach(c => c.classList.toggle('on', c.dataset.price === activePrice));
+}
+
+function buildFilterChips() {
+  const wrap = document.getElementById('filterChips');
+  if (!wrap || wrap.children.length) return;
+
+  const labels = {
+    All:'All',
+    Mugs:'Mugs',
+    Badges:'Badges',
+    Clothing:'Clothing',
+    Posters:'Posters',
+    Cards:'Greeting Cards',
+    WallDeco:'Wall Deco',
+    Slate:'Slate & Boards',
+    Teddies:'Teddies',
+    Cushions:'Cushions',
+    Other:'Gifts & More'
+  };
+
+  cats.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'chip' + (c === activeCat ? ' on' : '');
+    btn.dataset.cat = c;
+    btn.textContent = labels[c] || c;
+    btn.onclick = () => {
+      activeCat = c;
+      document.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', b.dataset.cat === c));
+      renderShop();
+    };
+    wrap.appendChild(btn);
+  });
+}
+
+function renderShop() {
+  buildFilterChips();
+  buildOccChips();
+  buildPriceChips();
+
+  const q = (document.getElementById('shopSearch')?.value || '').toLowerCase();
+  const sort = document.getElementById('shopSort')?.value || 'default';
+  const priceRange = prices.find(p => p.key === activePrice);
+
+  let list = getProducts().filter(p => {
+    const matchCat = activeCat === 'All' || p.cat === activeCat;
+    const matchOcc = activeOcc === 'All' || (p.occ && p.occ.includes(activeOcc));
+    const matchPrice = !priceRange || (p.price >= priceRange.min && p.price < priceRange.max);
+    const matchQ = !q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+    return matchCat && matchOcc && matchPrice && matchQ;
+  });
+
+  if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+  if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+  if (sort === 'name') list.sort((a, b) => a.name.localeCompare(b.name));
+
+  const grid = document.getElementById('shopGrid');
+  const meta = document.getElementById('shopMeta');
+  const occLabel = activeOcc !== 'All' ? ` for ${occs.find(o => o.key === activeOcc)?.label || activeOcc}` : '';
+  const priceLabel = priceRange ? ` · ${priceRange.label}` : '';
+
+  meta.textContent = list.length ? `Showing ${list.length} product${list.length !== 1 ? 's' : ''}${occLabel}${priceLabel}` : '';
+
+  grid.innerHTML = list.length
+    ? list.map(p => productCard(p, true)).join('')
+    : `<div class="no-results"><p>No products found. <button onclick="activeCat='All';activeOcc='All';activePrice='All';updateOccChips();updatePriceChips();document.getElementById('shopSearch').value='';renderShop();" style="color:var(--g-dk);font-weight:600;cursor:pointer;background:none;border:none;font-family:inherit;">Clear all filters</button></p></div>`;
+
+  setTimeout(() => {
+    document.querySelectorAll('.product-img img').forEach(img => {
+      img.onerror = function(){ handleImgError(this); };
+      if (img.complete && img.naturalWidth === 0) handleImgError(img);
+    });
+  }, 50);
+
+  renderRecent();
+}
+
+// Etsy API
+async function fetchEtsyProducts() {
+  const banner = document.getElementById('syncBanner');
+  banner.className = 'sync-banner loading';
+  banner.textContent = '⏳ Syncing products from Etsy…';
+
+  try {
+    const res = await fetch('/api/etsy');
+    if (!res.ok) throw new Error('API error');
+
+    const data = await res.json();
+    liveProducts = data.results.map(l => ({
+      id: l.listing_id,
+      name: l.title,
+      cat: 'Other',
+      occ: [],
+      price: l.price.amount / l.price.divisor,
+      img: l.main_image?.url_570xN || l.images?.[0]?.url_570xN || '',
+      url: l.url,
+      amz: A.enabled ? A.searchUrl : null,
+    }));
+
+    banner.className = 'sync-banner success';
+    banner.textContent = '✅ Live from Etsy — ' + liveProducts.length + ' products loaded';
+    setTimeout(() => banner.style.display = 'none', 4000);
+  } catch (e) {
+    banner.className = 'sync-banner error';
+    banner.textContent = '⚠️ Etsy sync failed — showing manual products';
+    setTimeout(() => banner.style.display = 'none', 5000);
+  }
+
+  renderShop();
+  showHotProducts(getProducts());
+}
+
+// Read URL params
+const params = new URLSearchParams(window.location.search);
+if (params.get('cat')) activeCat = params.get('cat');
+if (params.get('occ')) activeOcc = params.get('occ');
+
+fetchEtsyProducts();
+</script>
+
+
+
+
+
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>
