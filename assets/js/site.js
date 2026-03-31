@@ -1,3 +1,21 @@
+(function () {
+  var cfg = window.CONFIG || {};
+  var maintenance = cfg.maintenance || {};
+  var isOn = maintenance.enabled === true;
+  var page = maintenance.page || "/maintenance.html";
+  var path = window.location.pathname.toLowerCase();
+  var target = page.toLowerCase();
+
+  if (!isOn) {
+    return;
+  }
+
+  if (path === target || path.endsWith("/maintenance.html")) {
+    return;
+  }
+
+  window.location.replace(page);
+})();
 // Mouse reveal background effect
 (function () {
   function initMouseReveal() {

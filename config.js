@@ -14,7 +14,10 @@ window.CONFIG = {
      2. They send you the Measurement ID (looks like G-XXXXXXXXXX)
      3. Paste it below — tracking activates automatically
   ───────────────────────────────────────── */
-  analytics: {
+  maintenance: {
+  enabled: false,
+  page: "/maintenance.html",
+},analytics: {
     gaId: null,   // e.g. "G-XXXXXXXXXX"
   },
 
