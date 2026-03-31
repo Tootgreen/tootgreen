@@ -15,7 +15,7 @@ window.CONFIG = {
      3. Paste it below — tracking activates automatically
   ───────────────────────────────────────── */
   maintenance: {
-  enabled: false,
+  enabled: true,
   page: "/maintenance.html",
 },analytics: {
     gaId: null,   // e.g. "G-XXXXXXXXXX"
