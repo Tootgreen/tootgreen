@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<title>About TootGreen | Personalised Gifts Made in the UK</title>
+<meta name="description" content="TootGreen has been making personalised gifts since 2018. 4.9 stars, 827 happy customers, and a slightly questionable sense of humour. Find out more about us.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/about.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+
+<div class="about-hero">
+  <div class="wrap">
+    <div class="about-hero-inner">
+      <div>
+        <p class="eyebrow">Our Story</p>
+        <h1 class="display display-xl" style="margin-bottom:1.2rem;">The shop that tells it like it is.</h1>
+        <p class="lead" style="margin-bottom:1.5rem;">TootGreen started with a simple idea: gifts should actually make people laugh. Not generic, not forgettable — something that says <em>"I know you."</em></p>
+        <p style="font-size:0.95rem;color:var(--body);line-height:1.8;margin-bottom:2rem;">Seven years later and we've shipped over 800 orders, earned a 4.9-star rating, and learned that the best gifts are the ones that feel genuinely personal.</p>
+        <div class="values-grid">
+          <div class="value-card"><span class="value-icon">✏️</span><div class="value-title">Made to order</div><div class="value-desc">Nothing sits in a warehouse. Every item is made fresh for you.</div></div>
+          <div class="value-card"><span class="value-icon">😂</span><div class="value-title">No filter</div><div class="value-desc">We love a laugh. Rude, sweet, sentimental — all welcome.</div></div>
+          <div class="value-card"><span class="value-icon">🤝</span><div class="value-title">Real people</div><div class="value-desc">You're talking to the person who actually makes your gift.</div></div>
+          <div class="value-card"><span class="value-icon">⭐</span><div class="value-title">Quality first</div><div class="value-desc"><span id="aboutQualityText"></span></div></div>
+        </div>
+      </div>
+      <div class="about-img-stack">
+        <div class="about-img-main"><img src="/images/about_hero.png" alt="TootGreen personalised slate board" onerror="this.parentElement.style.background='var(--g-lt)'"></div>
+        <div class="about-stat-card"><div class="asc-num" id="aboutStatNum"></div><div class="asc-label">Happy Customers</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-stats-row" id="aboutStatsRow"></div>
+
+<section class="section">
+  <div class="wrap">
+    <div style="max-width:680px;">
+      <p class="eyebrow reveal">The Journey</p>
+      <h2 class="display display-lg reveal" style="margin-bottom:2.5rem;">How we got here</h2>
+      <div class="timeline">
+        <div class="tl-item reveal"><div class="tl-year">2018</div><div class="tl-text"><strong>TootGreen opens on Etsy.</strong> First products: mugs and badges. First sale within the week.</div></div>
+        <div class="tl-item reveal reveal-d1"><div class="tl-year">2019</div><div class="tl-text"><strong>Clothing added to the range.</strong> Printed t-shirts and baby vests become a favourite for new parent gifts.</div></div>
+        <div class="tl-item reveal reveal-d2"><div class="tl-year">2021</div><div class="tl-text"><strong>100th sale milestone.</strong> Expanded into slate gifts, cushions, and personalised chocolate bars.</div></div>
+        <div class="tl-item reveal reveal-d3"><div class="tl-year">2023</div><div class="tl-text"><strong>500 sales.</strong> Custom orders now make up a third of all business. Teddies and wall art added.</div></div>
+        <div class="tl-item reveal reveal-d4"><div class="tl-year">2025</div><div class="tl-text"><strong id="aboutFinalStat"></strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div class="wrap">
+    <div class="cta-strip-inner">
+      <div>
+        <h2 class="display display-lg" style="color:#fff;margin-bottom:0.6rem;">Ready to find something <em>perfect</em>?</h2>
+        <p style="color:rgba(255,255,255,0.55);font-size:1rem;max-width:500px;">Browse the shop or tell us what you have in mind — we'll make it happen.</p>
+      </div>
+      <div style="display:flex;gap:0.8rem;flex-wrap:wrap;flex-shrink:0;">
+        <a class="btn btn-green" href="/shop.html">Browse the Shop</a>
+        <a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.25);" href="/custom.html">Custom Orders</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+const C = window.CONFIG, E = C.etsy, S = C.stats;
+
+document.getElementById('aboutStatNum').textContent = S.sales;
+document.getElementById('aboutQualityText').textContent = S.rating + ' stars across ' + S.reviews + ' reviews. We care about getting it right.';
+document.getElementById('aboutFinalStat').textContent = S.sales + ' sales and counting. ' + S.products + ' products, ' + S.rating + ' stars, and a brand new website. The journey continues.';
+document.getElementById('aboutStatsRow').innerHTML = `
+  <div class="about-stat-item"><div class="asi-num">${S.sales}</div><div class="asi-label">Orders shipped</div></div>
+  <div class="about-stat-item"><div class="asi-num">${S.rating}★</div><div class="asi-label">Average rating</div></div>
+  <div class="about-stat-item"><div class="asi-num">${S.reviews}</div><div class="asi-label">Reviews received</div></div>
+  <div class="about-stat-item"><div class="asi-num">${S.years}yrs</div><div class="asi-label">Trading on Etsy</div></div>`;
+
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  }),
+  { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+);
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+
+
+
+
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>

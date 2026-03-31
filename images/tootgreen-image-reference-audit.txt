@@ -1,0 +1,138 @@
+TOOTGREEN IMAGE REFERENCE AUDIT
+Generated from uploaded site package on 29 March 2026
+
+Summary
+-------
+Actual image files in package: 4
+Image paths referenced in code: 49
+Referenced images present: 1
+Referenced images missing: 48
+
+Present and referenced
+---------------------
+- images/about_hero.png
+    Used in: about.html
+    Used in: blog.html
+    Used in: blog/anniversary.html
+    Used in: blog/behindscenes.html
+    Used in: blog/birthday.html
+    Used in: blog/christmas.html
+    Used in: blog/guide.html
+    Used in: blog/lastminute.html
+    Used in: blog/leaving.html
+    Used in: blog/newbaby.html
+    Used in: blog/teachers.html
+    Used in: blog/wedding.html
+
+Missing expected images
+-----------------------
+- images/anniversary.jpg
+    Used in: blog.html
+- images/badge-babyonboard.jpg
+    Used in: config.js
+- images/badge-oap.jpg
+    Used in: config.js
+- images/behindscenes.jpg
+    Used in: blog.html
+- images/birthday.jpg
+    Used in: blog.html
+- images/card-birthday.jpg
+    Used in: config.js
+- images/card-funny.jpg
+    Used in: config.js
+- images/card-newbaby.jpg
+    Used in: config.js
+- images/christmas.jpg
+    Used in: blog.html
+- images/clothing-babyvest.jpg
+    Used in: config.js
+- images/clothing-bump.jpg
+    Used in: config.js
+- images/clothing-hoodie.jpg
+    Used in: config.js
+- images/clothing-sweatshirt.jpg
+    Used in: config.js
+- images/clothing-tshirt.jpg
+    Used in: config.js
+- images/custom/custom-badge-1.jpg
+    Used in: config.js
+- images/custom/custom-card-1.jpg
+    Used in: config.js
+- images/custom/custom-choc-1.jpg
+    Used in: config.js
+- images/custom/custom-clothing-1.jpg
+    Used in: config.js
+- images/custom/custom-mug-1.jpg
+    Used in: config.js
+- images/custom/custom-mug-2.jpg
+    Used in: config.js
+- images/custom/custom-poster-1.jpg
+    Used in: config.js
+- images/custom/custom-slate-1.jpg
+    Used in: config.js
+- images/custom/custom-teddy-1.jpg
+    Used in: config.js
+- images/filename.jpg
+    Used in: config.js
+- images/gift-chocbar.jpg
+    Used in: config.js
+- images/gift-rewardchart.jpg
+    Used in: config.js
+- images/gift-safariflag.jpg
+    Used in: config.js
+- images/gift-teacherchoc.jpg
+    Used in: config.js
+- images/guide.jpg
+    Used in: blog.html
+- images/lastminute.jpg
+    Used in: blog.html
+- images/leaving.jpg
+    Used in: blog.html
+- images/mug-bigspoon.jpg
+    Used in: config.js
+- images/mug-custom.jpg
+    Used in: config.js
+- images/mug-friend.jpg
+    Used in: config.js
+- images/mug-idgaf.jpg
+    Used in: config.js
+- images/mug-loveyoumore.jpg
+    Used in: config.js
+- images/mug-magnetic.jpg
+    Used in: config.js
+- images/newbaby.jpg
+    Used in: blog.html
+- images/poster-alphabet.jpg
+    Used in: config.js
+- images/poster-birthday.jpg
+    Used in: config.js
+- images/poster-quote.jpg
+    Used in: config.js
+- images/sillymug.jpg
+    Used in: config.js
+- images/slate-nan.jpg
+    Used in: config.js
+- images/teachers.jpg
+    Used in: blog.html
+- images/walldeco-bathroom.jpg
+    Used in: config.js
+- images/walldeco-kidsroom.jpg
+    Used in: config.js
+- images/walldeco-namesign.jpg
+    Used in: config.js
+- images/wedding.jpg
+    Used in: blog.html
+
+Actual files not referenced by the code
+---------------------------------------
+- Icons/icon-192.png
+- Icons/icon-512.png
+- favicon.ico
+
+Notes
+-----
+- The uploaded package contains only four image files: favicon.ico, Icons/icon-192.png, Icons/icon-512.png, and images/about_hero.png.
+- images/filename.jpg appears to be a placeholder entry in config.js and should be replaced or removed.
+- manifest.json currently points to /icons/icon-192.png and /icons/icon-512.png, but the uploaded folder is named Icons with a capital I. On case-sensitive hosting this will fail unless the folder name or paths are standardised.
+- Blog card images are referenced in blog.html, but the uploaded package only includes the fallback image images/about_hero.png.
+- If your local project contains more image files than this zip, this report reflects the zip only, not the live site or your full repo.
