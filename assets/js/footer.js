@@ -36,9 +36,7 @@ window.renderFooter = function () {
         <ul class="footer-links">
           <li><a href="/">Home</a></li>
           <li><a href="/shop.html">Shop All</a></li>
-          <li><a href="/custom.html">Custom Orders</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/custom.html">Custom Orders</a></li>          <li><a href="/contact.html">Contact</a></li>
           <li><a href="/delivery.html">Delivery & Returns</a></li>
           <li><a href="/privacy.html">Privacy Policy</a></li>
         </ul>
