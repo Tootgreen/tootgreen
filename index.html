@@ -164,7 +164,10 @@ function handleImgError(img) {
 function productCard(p) {
   const badge = p.badge ? `<span class="tag tag-green" style="position:absolute;top:.6rem;left:.6rem;">${p.badge}</span>` : '';
   const amzUrl = p.amz || (A.enabled ? A.searchUrl : null);
-  const amzBtn = (A.enabled && amzUrl) ? `<a class="buy-btn buy-amz" href="${amzUrl}" rel="noopener noreferrer"><span class="buy-icon">📦</span><span class="buy-label">Buy on<strong>Amazon</strong></span></a>` : '';
+  const amzLive = amzUrl && amzUrl.includes('/dp/');
+  const amzBtn = (A.enabled && amzUrl)
+    ? `<span class="amz-wrap"><a class="buy-btn buy-amz${amzLive ? '' : ' coming-soon'}" ${amzLive ? `href="${amzUrl}" rel="noopener noreferrer"` : 'href="#" onclick="return false"'}><span class="buy-icon">📦</span><span class="buy-label">Buy on<strong>Amazon</strong></span></a>${amzLive ? '' : '<span class="amz-coming-banner">Coming Soon</span>'}</span>`
+    : '';
   const cols = amzBtn ? '1fr 1fr' : '1fr';
   return `<div class="product-card">
     <div class="product-img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="handleImgError(this)">${badge}</div>

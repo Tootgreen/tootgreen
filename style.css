@@ -176,6 +176,20 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 .buy-amz { background:#fffbf0; border:1.5px solid #ff9900; color:#8a5200; }
 .buy-amz:hover { background:#ff9900; color:var(--ink); transform:translateY(-1px); }
 
+/* Amazon "Coming Soon" wrapper */
+.amz-wrap { position:relative; display:inline-flex; }
+.amz-wrap .buy-amz.coming-soon { opacity:0.6; pointer-events:none; cursor:default; filter:grayscale(0.3); }
+.amz-coming-banner {
+  position:absolute; top:-6px; right:-6px;
+  background:#ff9900; color:#fff;
+  font-family:'DM Sans',sans-serif; font-size:0.48rem; font-weight:700;
+  letter-spacing:0.04em; text-transform:uppercase;
+  padding:1px 5px; border-radius:3px;
+  pointer-events:none; white-space:nowrap;
+  box-shadow:0 1px 3px rgba(0,0,0,0.25);
+  z-index:2;
+}
+
 /* ── CTA strip ── */
 .cta-strip { background:var(--g-dk); color:#fff; padding:4rem 0; }
 .cta-strip-inner { display:flex; align-items:center; justify-content:space-between; gap:3rem; }

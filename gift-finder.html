@@ -182,7 +182,7 @@ function showResults() {
           <div class="result-price">£${Number(p.price).toFixed(2)}</div>
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
             <a class="btn btn-etsy" href="${p.url}" rel="noopener noreferrer" style="padding:0.5rem 1rem;font-size:0.78rem;">🛍 Buy on Etsy</a>
-            ${A.enabled && p.amz ? `<a class="btn btn-outline" href="${p.amz}" rel="noopener noreferrer" style="padding:0.5rem 1rem;font-size:0.78rem;">📦 Amazon</a>` : ''}
+            ${A.enabled && p.amz ? (() => { const live = p.amz.includes('/dp/'); return `<span class="amz-wrap" style="display:inline-flex;">${live ? `<a class="btn btn-outline" href="${p.amz}" rel="noopener noreferrer" style="padding:0.5rem 1rem;font-size:0.78rem;">📦 Amazon</a>` : `<a class="btn btn-outline coming-soon" href="#" onclick="return false" style="padding:0.5rem 1rem;font-size:0.78rem;opacity:0.6;pointer-events:none;filter:grayscale(0.3);">📦 Amazon</a><span class="amz-coming-banner">Coming Soon</span>`}</span>`; })() : ''}
           </div>
         </div>
       </div>
