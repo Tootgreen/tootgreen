@@ -358,7 +358,7 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 
 /* ── Footer ── */
 #footer { background:var(--g-dk); color:rgba(255,255,255,0.6); padding:4rem 0 2rem; }
-.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:1.5rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:2rem; }
+.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:1.2rem;}
 .footer-logo { font-family:'Nunito',sans-serif; font-weight:900; font-size:1.6rem; color:#fff; letter-spacing:-0.5px; margin-bottom:0.8rem; display:flex; align-items:center; gap:10px; }
 .footer-logo-icon { width:34px; height:34px; background:rgba(255,255,255,0.15); border-radius:7px; display:flex; align-items:center; justify-content:center; }
 .footer-logo-icon span { font-family:'Nunito',sans-serif; font-weight:900; font-size:13px; color:white; letter-spacing:-1px; }
@@ -367,8 +367,8 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 .footer-links { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
 .footer-links a { font-size:0.83rem; cursor:pointer; transition:color 0.2s; }
 .footer-links a:hover { color:var(--g-leaf); }
-.footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-.footer-copy,.footer-love { font-size:0.72rem; }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:nowrap; gap:1rem; }
+.footer-copy,.footer-love { font-size:0.65rem; }
 .footer-love span { color:var(--g-leaf); }
 
 /* ── Hero search panel ── */
