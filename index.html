@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/api/config"></script>
+<script src="/config.js"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,6 +120,7 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
     <button class="pwa-btn-dismiss" onclick="dismissPWA()">Not now</button>
   </div>
 </div>
+
 
 
 </main>
@@ -259,6 +260,52 @@ function dismissPWA() {
 }
 
 
+// Email signup
+async function submitSignup() {
+  const btn = this;
+  const name = document.getElementById('signupName')?.value.trim();
+  const email = document.getElementById('signupEmail')?.value.trim();
+
+  if (!email) {
+    alert('Please enter your email address.');
+    return;
+  }
+
+  btn.textContent = 'Signing up…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    subject: 'TootGreen Newsletter Signup - ' + (name || email),
+    from_name: name || 'New Subscriber',
+    email: email,
+    message:
+      'New newsletter signup:\n\n' +
+      'Name: ' + (name || 'Not provided') + '\n' +
+      'Email: ' + email + '\n' +
+      'Date: ' + new Date().toLocaleDateString('en-GB')
+  })
+});
+
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById('signupSuccess').classList.add('show');
+      document.getElementById('signupName').value = '';
+      document.getElementById('signupEmail').value = '';
+    } else {
+      alert('Something went wrong — please try again.');
+    }
+  } catch {
+    alert('Something went wrong — please try again.');
+  }
+
+  btn.textContent = 'Join the List 💚';
+  btn.disabled = false;
+}
 
 // Reveal
 const obs = new IntersectionObserver(
