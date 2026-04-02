@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/api/config"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+<title>Contact TootGreen | Get in Touch</title>
+<meta name="description" content="Got a question, custom idea or bulk order request? Get in touch with TootGreen. We aim to reply within 24 hours, Monday to Friday.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.tootgreen.co.uk/contact.html">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+
+<script>
+window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div id="mouse-reveal"></div>
+<div id="site-header"></div>
+
+<main id="page-content">
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <p class="eyebrow">Get in Touch</p>
+        <h1 class="display display-lg" style="margin-bottom:0.6rem;">We'd love to hear from you.</h1>
+        <p class="lead">Questions, custom ideas, bulk orders, or order queries. Just ask.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-list reveal" id="contactInfoList"></div>
+
+          <div class="reveal" style="margin-top:2.5rem;padding:1.5rem;background:var(--g-lt);border-radius:8px;border:1px solid rgba(46,204,90,0.2);">
+            <p class="eyebrow" style="margin-bottom:0.5rem;">Quick tip</p>
+            <p style="font-size:0.88rem;color:var(--body);line-height:1.7;">
+              The fastest way to reach us is via <strong>Etsy messages</strong>. We check them through the day and can pull up your order details straight away.
+            </p>
+            <a class="btn btn-etsy" style="margin-top:1rem;display:inline-flex;" id="contactEtsyMsg" href="#" rel="noopener noreferrer">Message on Etsy →</a>
+          </div>
+        </div>
+
+        <div class="custom-form-card reveal">
+          <div class="form-title">Send a Message</div>
+          <div class="form-sub">We aim to reply within 24 hours.</div>
+
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" id="contactAccessKey" value="">
+            <input type="hidden" name="subject" value="TootGreen website enquiry">
+            <input type="hidden" name="from_name" value="TootGreen Website">
+            <input type="hidden" name="redirect" value="">
+            <input type="checkbox" name="botcheck" style="display:none;">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contactName">Name</label>
+                <input class="form-input" id="contactName" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">Email</label>
+                <input class="form-input" id="contactEmail" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactSubject">Subject</label>
+              <select class="form-select" id="contactSubject" name="enquiry_type">
+                <option value="Custom order enquiry">Custom order enquiry</option>
+                <option value="Order query">Order query</option>
+                <option value="Product question">Product question</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Message</label>
+              <textarea class="form-textarea" id="contactMessage" name="message" placeholder="What's on your mind?" required></textarea>
+            </div>
+
+            <div id="contactError" style="display:none;margin-bottom:1rem;padding:0.85rem 1rem;border-radius:8px;background:#fff4f4;border:1px solid #f1b7b7;color:#8a1f1f;font-size:0.9rem;"></div>
+
+            <button class="btn btn-solid" id="contactSubmitBtn" type="submit" style="width:100%;justify-content:center;padding:1rem;">Send Message →</button>
+          </form>
+
+          <div class="form-success" id="contactSuccess">
+            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✅</div>
+            <strong style="color:var(--g-dk);">Message sent!</strong>
+            <p style="font-size:0.85rem;color:var(--body);margin-top:0.3rem;">We'll be in touch within 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+(function () {
+  const C = window.CONFIG || {};
+  const E = C.etsy || {};
+  const contact = C.contact || {};
+
+  const etsyBtn = document.getElementById('contactEtsyMsg');
+  if (etsyBtn) {
+    etsyBtn.href = E.messageUrl || E.shopUrl || '#';
+  }
+
+  const infoList = document.getElementById('contactInfoList');
+  if (infoList) {
+    let html = '';
+
+    if (E.shopUrl) {
+      html += `
+        <div class="ci-item">
+          <div class="ci-icon">🛍</div>
+          <div>
+            <div class="ci-label">Etsy Shop</div>
+            <div class="ci-value">
+              <a href="${E.shopUrl}" rel="noopener noreferrer">${E.shopUrl.replace('https://', '')}</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (E.messageUrl) {
+      html += `
+        <div class="ci-item">
+          <div class="ci-icon">💬</div>
+          <div>
+            <div class="ci-label">Etsy Messages</div>
+            <div class="ci-value">
+              <a href="${E.messageUrl}" rel="noopener noreferrer">Message us on Etsy</a> - usually replied to the same day
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (contact.email) {
+      html += `
+        <div class="ci-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">
+              <a href="mailto:${contact.email}">${contact.email}</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (contact.phone) {
+      html += `
+        <div class="ci-item">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-value">${contact.phone}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (contact.responseTime) {
+      html += `
+        <div class="ci-item">
+          <div class="ci-icon">⏱</div>
+          <div>
+            <div class="ci-label">Response Time</div>
+            <div class="ci-value">${contact.responseTime}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    infoList.innerHTML = html;
+  }
+
+  const form = document.getElementById('contactForm');
+  const successBox = document.getElementById('contactSuccess');
+  const errorBox = document.getElementById('contactError');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+
+  const accessKeyInput = document.getElementById('contactAccessKey');
+  if (accessKeyInput && window.CONFIG && window.CONFIG.web3forms) {
+    accessKeyInput.value = window.CONFIG.web3forms.accessKey;
+  }
+
+  function showError(message) {
+    errorBox.textContent = message;
+    errorBox.style.display = 'block';
+  }
+
+  function clearError() {
+    errorBox.textContent = '';
+    errorBox.style.display = 'none';
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  if (form) {
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      clearError();
+      successBox.classList.remove('show');
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const subjectType = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !message) {
+        showError('Please fill in your name, email and message.');
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+
+        formData.set('subject', 'TootGreen Enquiry | ' + subjectType + ' | ' + name);
+        formData.set(
+          'message',
+          'Name: ' + name + '\n' +
+          'Email: ' + email + '\n' +
+          'Subject: ' + subjectType + '\n\n' +
+          'Message:\n' + message
+        );
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          console.error('Web3Forms error:', data);
+          showError(data.message || 'Message failed to send. Please try Etsy messages instead.');
+          return;
+        }
+
+        form.reset();
+        successBox.classList.add('show');
+      } catch (error) {
+        console.error('Contact form request failed:', error);
+        showError('A network error stopped the message being sent.');
+      } finally {
+        submitBtn.textContent = 'Send Message →';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  const obs = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    obs.observe(el);
+  });
+})();
+</script>
+
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+
+</body>
+</html>
