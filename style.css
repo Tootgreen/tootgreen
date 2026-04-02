@@ -423,7 +423,7 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
   padding:1rem 1.2rem;
   border-radius:12px;
   box-shadow:0 8px 30px rgba(0,0,0,0.2);
-  z-index:320;
+  z-index:2147483647 ;
   max-width:280px;
 }
 .pwa-banner.show { display:block; animation:pageIn 0.3s ease both; }
