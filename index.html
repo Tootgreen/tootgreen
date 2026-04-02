@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/config.js"></script>
+<script src="/api/config"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,38 +121,6 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
   </div>
 </div>
 
-<section class="signup-section">
-  <div class="wrap">
-    <div class="signup-inner reveal">
-      <div class="signup-text">
-        <p class="eyebrow" style="color:var(--g-leaf);">Stay in the loop</p>
-        <h2 class="display display-lg" style="color:#fff;margin-bottom:0.8rem;">New gifts, offers &amp; ideas<br>straight to your inbox</h2>
-        <p style="color:rgba(255,255,255,0.65);font-size:0.95rem;line-height:1.7;max-width:420px;">Be the first to hear about new products, seasonal specials, and the occasional bit of gift inspiration. No spam. Unsubscribe any time.</p>
-      </div>
-      <div class="signup-form-wrap">
-        <div class="signup-card">
-          <div class="form-group" style="margin-bottom:0.9rem;">
-            <label class="form-label" style="color:var(--ink);">Your Name</label>
-            <input class="form-input" type="text" id="signupName" placeholder="Jane Smith">
-          </div>
-          <div class="form-group" style="margin-bottom:1.2rem;">
-            <label class="form-label" style="color:var(--ink);">Email Address</label>
-            <input class="form-input" type="email" id="signupEmail" placeholder="jane@email.com">
-          </div>
-          <button class="btn btn-green" style="width:100%;justify-content:center;padding:0.9rem;" onclick="submitSignup.call(this)">
-            Join the List 💚
-          </button>
-          <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:0.8rem;">No spam, ever. Unsubscribe with one click.</p>
-          <div class="form-success" id="signupSuccess">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">🎉</div>
-            <strong style="color:var(--g-dk);">You're on the list!</strong>
-            <p style="font-size:0.85rem;color:var(--body);margin-top:0.3rem;">Watch your inbox for new products and offers.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 </main>
 
@@ -291,52 +259,6 @@ function dismissPWA() {
 }
 
 
-// Email signup
-async function submitSignup() {
-  const btn = this;
-  const name = document.getElementById('signupName')?.value.trim();
-  const email = document.getElementById('signupEmail')?.value.trim();
-
-  if (!email) {
-    alert('Please enter your email address.');
-    return;
-  }
-
-  btn.textContent = 'Signing up…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    subject: 'TootGreen Newsletter Signup - ' + (name || email),
-    from_name: name || 'New Subscriber',
-    email: email,
-    message:
-      'New newsletter signup:\n\n' +
-      'Name: ' + (name || 'Not provided') + '\n' +
-      'Email: ' + email + '\n' +
-      'Date: ' + new Date().toLocaleDateString('en-GB')
-  })
-});
-
-    const data = await res.json();
-
-    if (data.success) {
-      document.getElementById('signupSuccess').classList.add('show');
-      document.getElementById('signupName').value = '';
-      document.getElementById('signupEmail').value = '';
-    } else {
-      alert('Something went wrong — please try again.');
-    }
-  } catch {
-    alert('Something went wrong — please try again.');
-  }
-
-  btn.textContent = 'Join the List 💚';
-  btn.disabled = false;
-}
 
 // Reveal
 const obs = new IntersectionObserver(

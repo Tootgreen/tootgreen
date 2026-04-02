@@ -6,12 +6,12 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+  const accessKey = process.env.WEB3FORMS_API;
 
   if (!accessKey) {
     return res.status(500).json({
       success: false,
-      error: 'WEB3FORMS_ACCESS_KEY not configured'
+      error: 'WEB3FORMS_API not configured'
     });
   }
 
@@ -36,7 +36,7 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         access_key: accessKey,
-        subject: 'CUSTOM ORDER',
+        subject: String(body.subject || 'TootGreen Enquiry').trim(),
         from_name: name,
         email: email,
         message: message

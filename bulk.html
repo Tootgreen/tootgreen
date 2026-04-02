@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/config.js"></script>
+<script src="/api/config"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,24 +141,18 @@ async function submitBulk() {
   btn.disabled = true;
 
   try {
- const res = await fetch('/api/contact', {
-  method: 'POST',
-  headers: {'Content-Type':'application/json'},
-  body: JSON.stringify({
-    subject: `TootGreen Bulk Order Enquiry - ${product} x${qty} from ${name}`,
-    from_name: name,
-    email: email,
-    message: `Name: ${name}
-Email: ${email}
-Organisation: ${org || 'Not provided'}
-Product: ${product}
-Quantity: ${qty || 'Not specified'}
-Date needed: ${date || 'Not specified'}
+  const formData = new FormData();
+    formData.append('access_key', window.CONFIG.web3forms.accessKey);
+    formData.append('subject', `TootGreen Bulk Order Enquiry - ${product} x${qty} from ${name}`);
+    formData.append('from_name', name);
+    formData.append('email', email);
+    formData.append('message', `Name: ${name}\nEmail: ${email}\nOrganisation: ${org || 'Not provided'}\nProduct: ${product}\nQuantity: ${qty || 'Not specified'}\nDate needed: ${date || 'Not specified'}\n\nDetails:\n${details || 'None provided'}`);
 
-Details:
-${details || 'None provided'}`
-  })
-});
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
 
     const data = await res.json();
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/config.js"></script>
+<script src="/api/config"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
           <div class="form-sub">We aim to reply within 24 hours.</div>
 
           <form id="contactForm" novalidate>
-            <input type="hidden" name="access_key" value="723e175a-8487-46cd-b581-b229bbfeaacc">
+            <input type="hidden" name="access_key" id="contactAccessKey" value="">
             <input type="hidden" name="subject" value="TootGreen website enquiry">
             <input type="hidden" name="from_name" value="TootGreen Website">
             <input type="hidden" name="redirect" value="">
@@ -188,6 +188,11 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
   const successBox = document.getElementById('contactSuccess');
   const errorBox = document.getElementById('contactError');
   const submitBtn = document.getElementById('contactSubmitBtn');
+
+  const accessKeyInput = document.getElementById('contactAccessKey');
+  if (accessKeyInput && window.CONFIG && window.CONFIG.web3forms) {
+    accessKeyInput.value = window.CONFIG.web3forms.accessKey;
+  }
 
   function showError(message) {
     errorBox.textContent = message;
