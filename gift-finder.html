@@ -119,6 +119,14 @@
 <script>
 const C = window.CONFIG, E = C.etsy, A = C.amazon;
 const answers = { occ: null, budget: null, vibe: null };
+let liveProducts = null;
+
+// Try to fetch live Etsy products in background
+TGProducts.fetchProducts().then(p => { liveProducts = p; }).catch(() => {});
+
+function getProducts() {
+  return liveProducts || C.products;
+}
 
 function pick(step, value) {
   if (step === 1) answers.occ = value;
@@ -143,7 +151,7 @@ function showResults() {
     : answers.budget === 'u35' ? 35
     : 9999;
 
-  const scored = C.products.map(p => {
+  const scored = getProducts().map(p => {
     let score = 0;
     if (p.occ && p.occ.includes(answers.occ)) score += 3;
     if (p.price <= maxPrice) score += 2;
@@ -201,6 +209,7 @@ function restart() {
 
 
 
+<script src="/assets/js/products.js"></script>
 <script src="/assets/js/header.js" defer></script>
 <script src="/assets/js/footer.js" defer></script>
 <script src="/assets/js/layout.js" defer></script>

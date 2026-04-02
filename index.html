@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/config.js"></script>
+<script src="/api/config"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,7 +122,6 @@ window.va = window.va || function(){ (window.vaq = window.vaq || []).push(argume
 </div>
 
 
-
 </main>
 
 <div id="site-footer"></div>
@@ -181,14 +180,22 @@ function productCard(p) {
   </div>`;
 }
 
-document.getElementById('homeFeatGrid').innerHTML = C.products.slice(0,8).map(productCard).join('');
+// Render featured products — try live Etsy first, fall back to config
+function renderFeatured(products) {
+  document.getElementById('homeFeatGrid').innerHTML = products.slice(0,8).map(productCard).join('');
+  setTimeout(() => {
+    document.querySelectorAll('#homeFeatGrid .product-img img').forEach(img => {
+      img.onerror = function(){ handleImgError(this); };
+      if (img.complete && img.naturalWidth === 0) handleImgError(img);
+    });
+  }, 50);
+}
 
-setTimeout(() => {
-  document.querySelectorAll('.product-img img,.mosaic-item img').forEach(img => {
-    img.onerror = function(){ handleImgError(this); };
-    if (img.complete && img.naturalWidth === 0) handleImgError(img);
-  });
-}, 100);
+renderFeatured(C.products);
+
+TGProducts.fetchProducts().then(live => {
+  if (live && live.length) renderFeatured(live);
+}).catch(() => {});
 
 
 // Hero occasion pills
@@ -260,52 +267,6 @@ function dismissPWA() {
 }
 
 
-// Email signup
-async function submitSignup() {
-  const btn = this;
-  const name = document.getElementById('signupName')?.value.trim();
-  const email = document.getElementById('signupEmail')?.value.trim();
-
-  if (!email) {
-    alert('Please enter your email address.');
-    return;
-  }
-
-  btn.textContent = 'Signing up…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    subject: 'TootGreen Newsletter Signup - ' + (name || email),
-    from_name: name || 'New Subscriber',
-    email: email,
-    message:
-      'New newsletter signup:\n\n' +
-      'Name: ' + (name || 'Not provided') + '\n' +
-      'Email: ' + email + '\n' +
-      'Date: ' + new Date().toLocaleDateString('en-GB')
-  })
-});
-
-    const data = await res.json();
-
-    if (data.success) {
-      document.getElementById('signupSuccess').classList.add('show');
-      document.getElementById('signupName').value = '';
-      document.getElementById('signupEmail').value = '';
-    } else {
-      alert('Something went wrong — please try again.');
-    }
-  } catch {
-    alert('Something went wrong — please try again.');
-  }
-
-  btn.textContent = 'Join the List 💚';
-  btn.disabled = false;
-}
 
 // Reveal
 const obs = new IntersectionObserver(
@@ -325,6 +286,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 
 
+<script src="/assets/js/products.js"></script>
 <script src="/assets/js/header.js" defer></script>
 <script src="/assets/js/footer.js" defer></script>
 <script src="/assets/js/layout.js" defer></script>

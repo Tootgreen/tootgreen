@@ -438,19 +438,12 @@ async function fetchEtsyProducts() {
   banner.textContent = '⏳ Syncing products from Etsy…';
 
   try {
-    const res = await fetch('/api/etsy');
-    if (!res.ok) throw new Error('API error');
+    const products = await TGProducts.fetchProducts();
 
-    const data = await res.json();
-    liveProducts = data.results.map(l => ({
-      id: l.listing_id,
-      name: l.title,
-      cat: 'Other',
-      occ: [],
-      price: l.price.amount / l.price.divisor,
-      img: l.main_image?.url_570xN || l.images?.[0]?.url_570xN || '',
-      url: l.url,
-      amz: A.enabled ? A.searchUrl : null,
+    // Attach Amazon fallback URL to each product
+    liveProducts = products.map(p => ({
+      ...p,
+      amz: p.amz || (A.enabled ? A.searchUrl : null),
     }));
 
     banner.className = 'sync-banner success';
@@ -479,6 +472,7 @@ fetchEtsyProducts();
 
 
 
+<script src="/assets/js/products.js"></script>
 <script src="/assets/js/header.js" defer></script>
 <script src="/assets/js/footer.js" defer></script>
 <script src="/assets/js/layout.js" defer></script>
