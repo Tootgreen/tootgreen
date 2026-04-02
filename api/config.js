@@ -1,4 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════
+module.exports = async function handler(req, res) {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
+  res.status(200).send(`/* ═══════════════════════════════════════════════════════════════
    TOOTGREEN — SITE CONFIG
    Edit this file to update content across the whole website.
    Save and push to GitHub — changes go live automatically.
@@ -189,4 +192,6 @@ window.CONFIG = {
     tagline:     "Made with ♥ and a questionable sense of humour.",
   },
 
+};
+`);
 };
