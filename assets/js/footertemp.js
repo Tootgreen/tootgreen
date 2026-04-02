@@ -10,14 +10,6 @@ window.renderFooter = function () {
   const F = C.footer || {};
   const year = new Date().getFullYear();
 
-  const amzFooterBtn = (function() {
-    if (!A.enabled || !A.searchUrl) return '';
-    if (A.searchUrl === 'xxxxx') {
-      return '<span class="amz-wrap"><a class="footer-amz-btn" style="opacity:0.6;pointer-events:none;cursor:default;">Shop on Amazon</a><span class="amz-coming-banner">Coming Soon</span></span>';
-    }
-    return '<a class="footer-amz-btn" href="' + A.searchUrl + '" rel="noopener noreferrer" target="_blank">Shop on Amazon</a>';
-  })();
-
   footer.innerHTML = `
 <footer id="footer">
   <div class="wrap">
@@ -31,18 +23,20 @@ window.renderFooter = function () {
             <span class="logo-toot">Toot</span><span class="logo-green">Green</span>
           </span>
         </div>
+
         <p class="footer-desc">${F.description || ""}</p>
-        <a class="footer-etsy-btn" href="${E.shopUrl || "#"}" rel="noopener noreferrer">Shop on Etsy</a>
-        ${amzFooterBtn}
-      </div>
+
+        <a class="footer-etsy-btn" href="${E.shopUrl || "#"}" rel="noopener noreferrer">
+          Shop on Etsy
+        </a>
+        ${A.enabled && A.searchUrl && A.searchUrl !== 'xxxxx' ? '<a class="footer-amz-btn" href="' + A.searchUrl + '" rel="noopener noreferrer" target="_blank">Shop on Amazon</a>' : A.enabled && A.searchUrl ? '<span class="amz-wrap"><a class="footer-amz-btn" style="opacity:0.6;pointer-events:none;cursor:default;">Shop on Amazon</a><span class="amz-coming-banner">Coming Soon</span></span>' : ""}
 
       <div>
         <div class="footer-col-head">Navigate</div>
         <ul class="footer-links">
           <li><a href="/">Home</a></li>
           <li><a href="/shop.html">Shop All</a></li>
-          <li><a href="/custom.html">Custom Orders</a></li>
-          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/custom.html">Custom Orders</a></li>          <li><a href="/contact.html">Contact</a></li>
           <li><a href="/delivery.html">Delivery & Returns</a></li>
           <li><a href="/privacy.html">Privacy Policy</a></li>
         </ul>
@@ -82,8 +76,8 @@ window.renderFooter = function () {
   if (etsyLinks) {
     etsyLinks.innerHTML = `
       <li><a href="${E.shopUrl || "#"}" rel="noopener noreferrer">Shop on Etsy</a></li>
-      ${A.enabled && A.searchUrl && A.searchUrl !== 'xxxxx' ? '<li><a href="' + A.searchUrl + '" rel="noopener noreferrer" target="_blank">Shop on Amazon</a></li>' : ''}
-      <li><a href="/delivery.html">Delivery & Returns</a></li>
+      ${A.enabled && A.searchUrl ? '<li><a href="' + A.searchUrl + '" rel="noopener noreferrer">Shop on Amazon</a></li>' : ""}
+            <li><a href="/delivery.html">Delivery & Returns</a></li>
       <li><a href="${E.messageUrl || E.shopUrl || "#"}" rel="noopener noreferrer">Message Us</a></li>
     `;
   }
