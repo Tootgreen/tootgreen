@@ -29,8 +29,7 @@ window.renderFooter = function () {
         <a class="footer-etsy-btn" href="${E.shopUrl || "#"}" rel="noopener noreferrer">
           Shop on Etsy
         </a>
-        ${A.enabled && A.searchUrl ? '<a class="footer-amz-btn" href="' + A.searchUrl + '" rel="noopener noreferrer">Shop on Amazon</a>' : ""}
-      </div>
+${A.enabled && A.searchUrl ? '<span class="amz-wrap"><a class="footer-amz-btn" style="opacity:0.6;pointer-events:none;cursor:default;">Shop on Amazon</a><span class="amz-coming-banner">Coming Soon</span></span>' : ""}      </div>
 
       <div>
         <div class="footer-col-head">Navigate</div>
