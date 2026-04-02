@@ -1,5 +1,9 @@
 {
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true }
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/collections", "destination": "/contact.html", "permanent": true },
+    { "source": "/shop-all", "destination": "/shop.html", "permanent": true },
+    { "source": "/store-policy", "destination": "/faq.html", "permanent": true },
+    { "source": "/new-in", "destination": "/shop.html", "permanent": true }
   ]
 }
