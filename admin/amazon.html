@@ -233,7 +233,7 @@
   const REPO  = 'Tootgreen/tootgreen';
   const FILE  = 'amazon-urls.json';
   const BRANCH = 'main';
-  const TOKEN_KEY = 'tg_gh_token';
+
 
   let listings   = [];
   let amazonUrls = {};
@@ -257,7 +257,7 @@
   }
 
   // ── Token ──
-  function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+
 
   function saveToken() {
     const val = document.getElementById('tokenInput').value.trim();
@@ -269,9 +269,7 @@
   }
 
   function checkToken() {
-    if (getToken()) {
-      document.getElementById('tokenBanner').style.display = 'none';
-    }
+    document.getElementById('tokenBanner').style.display = 'none';
   }
 
   // ── Load ──
@@ -380,14 +378,6 @@
 
   // ── Save to GitHub ──
   async function saveToSite() {
-    const token = getToken();
-    if (!token) {
-      setStatus('error', '⚠️ No GitHub token — complete the setup above first');
-      document.getElementById('tokenBanner').style.display = 'block';
-      document.getElementById('tokenBanner').scrollIntoView({ behavior: 'smooth' });
-      return;
-    }
-
     const btn = document.getElementById('saveBtn');
     btn.disabled  = true;
     btn.className = 'btn-save saving';
@@ -395,39 +385,15 @@
     setStatus('saving', 'Saving to GitHub…');
 
     try {
-      const apiBase = `https://api.github.com/repos/${REPO}/contents/${FILE}`;
-      const headers = {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28'
-      };
-
-      // Get current file SHA (needed for update)
-      let sha = null;
-      const existing = await fetch(`${apiBase}?ref=${BRANCH}`, { headers });
-      if (existing.ok) {
-        const data = await existing.json();
-        sha = data.sha;
-      }
-
-      // Push updated file
-      const content = btoa(unescape(encodeURIComponent(buildJson())));
-      const body = {
-        message: 'Update Amazon URLs',
-        content,
-        branch: BRANCH,
-        ...(sha ? { sha } : {})
-      };
-
-      const pushRes = await fetch(apiBase, {
-        method: 'PUT',
-        headers: { ...headers, 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+      const pushRes = await fetch('/api/save-amazon', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: buildJson() })
       });
 
       if (!pushRes.ok) {
         const err = await pushRes.json();
-        throw new Error(err.message || 'GitHub API error');
+        throw new Error(err.error || 'Save failed');
       }
 
       btn.className = 'btn-save success';
