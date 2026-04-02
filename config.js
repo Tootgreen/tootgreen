@@ -52,7 +52,7 @@ window.CONFIG = {
     apiKey:    null,
     secretKey: null,
     shopName:  null,
-    searchUrl: "https://www.amazon.co.uk/s?k=tootgreen+personalised+gifts",
+    searchUrl: "xxxxx",
     enabled:   true,
   },
 
