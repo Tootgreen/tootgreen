@@ -558,7 +558,7 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 }
 
 /* Make sure your actual page content sits above it */
-body > *:not(#mouse-reveal) {
+body > *:not(#mouse-reveal):not(.cookie-popup):not(.pwa-banner) {
   position: relative;
   z-index: 1;
 }
