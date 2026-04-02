@@ -53,6 +53,7 @@ window.CONFIG = {
     secretKey: null,
     shopName:  null,
     shopUrl:   "https://www.amazon.co.uk/s?k=tootgreen+personalised+gifts", // ← Your Amazon shop URL — update this when your shop is live
+    searchUrl: "https://www.amazon.co.uk/s?k=tootgreen+personalised+gifts",
     enabled:   true,
   },
 
