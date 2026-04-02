@@ -71,17 +71,37 @@ window.TGProducts = (function () {
     };
   }
 
-  async function fetchProducts() {
-    const res = await fetch('/api/etsy');
+  async function fetchAmazonUrls() {
+    try {
+      const res = await fetch('/amazon-urls.json');
+      if (!res.ok) return {};
+      return await res.json();
+    } catch (e) {
+      return {};
+    }
+  }
 
-    if (!res.ok) {
+  async function fetchProducts() {
+    const [etsyRes, amazonUrls] = await Promise.all([
+      fetch('/api/etsy'),
+      fetchAmazonUrls()
+    ]);
+
+    if (!etsyRes.ok) {
       throw new Error('Etsy request failed');
     }
 
-    const data = await res.json();
+    const data = await etsyRes.json();
     const listings = data.results || [];
 
-    return listings.map(normaliseListing);
+    return listings.map(function(listing) {
+      const product = normaliseListing(listing);
+      const amz = amazonUrls[listing.title] || amazonUrls[String(listing.listing_id)];
+      if (amz && typeof amz === 'string' && amz.trim()) {
+        product.amz = amz.trim();
+      }
+      return product;
+    });
   }
 
   return {
