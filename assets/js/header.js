@@ -33,7 +33,7 @@ window.renderHeader = function () {
       <li><a href="/blog.html" data-nav="/blog.html">Blog</a></li>
       <li class="nav-sep">|</li>
       <li><a href="/faq.html" data-nav="/faq.html">FAQ</a></li>
-      <li class="nav-sep">|</li>      <li class="nav-sep">|</li>
+      <li class="nav-sep">|</li>
       <li><a href="/contact.html" data-nav="/contact.html">Contact</a></li>
       <li class="nav-sep">|</li>
       <li><a href="/delivery.html" data-nav="/delivery.html">Delivery & Returns</a></li>
@@ -55,7 +55,8 @@ window.renderHeader = function () {
   <a href="/custom.html">Custom Orders</a>
   <a href="/bulk.html">Bulk Orders</a>
   <a href="/blog.html">Blog</a>
-  <a href="/faq.html">FAQ</a>  <a href="/contact.html">Contact</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/contact.html">Contact</a>
   <a href="/delivery.html">Delivery & Returns</a>
   ${E.shopUrl ? `<a href="${E.shopUrl}" id="mobEtsyBtn" class="mob-etsy" rel="noopener noreferrer">Visit Etsy Shop</a>` : ""}
 </div>
