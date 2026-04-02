@@ -76,7 +76,7 @@ window.renderFooter = function () {
   if (etsyLinks) {
     etsyLinks.innerHTML = `
       <li><a href="${E.shopUrl || "#"}" rel="noopener noreferrer">Shop on Etsy</a></li>
-      ${A.enabled && A.searchUrl ? `<li><a href="${A.searchUrl}" rel="noopener noreferrer">Shop on Amazon</a></li>` : ""}
+      ${A.enabled && A.shopUrl ? `<li><a href="${A.shopUrl}" rel="noopener noreferrer">Shop on Amazon</a></li>` : ""}
             <li><a href="/delivery.html">Delivery & Returns</a></li>
       <li><a href="${E.messageUrl || E.shopUrl || "#"}" rel="noopener noreferrer">Message Us</a></li>
     `;

@@ -426,6 +426,13 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
   transition:background 0.2s; margin-top:0.8rem;
 }
 .footer-etsy-btn:hover { background:#d9581a; }
+.footer-amz-btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:#ff9900; color:#111; font-size:0.82rem; font-weight:700;
+  padding:0.6rem 1.2rem; border-radius:8px; text-decoration:none;
+  transition:background 0.2s; margin-top:0.5rem; margin-left:0.5rem;
+}
+.footer-amz-btn:hover { background:#e68900; }
 /* ── PWA install prompt ── */
 .pwa-banner {
   display:none;
