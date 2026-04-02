@@ -104,7 +104,7 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 }
 
 /* ── Layout ── */
-.wrap { max-width:1200px; margin:0 auto; padding:0 2.5rem; }
+.wrap { max-width:1200px; margin:0 auto; padding:0 1.5rem; }
 .section { padding:5rem 0; }
 .eyebrow {
   font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
@@ -358,7 +358,7 @@ button { cursor:pointer; font-family:inherit; border:none; background:none; }
 
 /* ── Footer ── */
 #footer { background:var(--g-dk); color:rgba(255,255,255,0.6); padding:4rem 0 2rem; }
-.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:2rem; }
+.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:1.5rem; padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:2rem; }
 .footer-logo { font-family:'Nunito',sans-serif; font-weight:900; font-size:1.6rem; color:#fff; letter-spacing:-0.5px; margin-bottom:0.8rem; display:flex; align-items:center; gap:10px; }
 .footer-logo-icon { width:34px; height:34px; background:rgba(255,255,255,0.15); border-radius:7px; display:flex; align-items:center; justify-content:center; }
 .footer-logo-icon span { font-family:'Nunito',sans-serif; font-weight:900; font-size:13px; color:white; letter-spacing:-1px; }
