@@ -55,7 +55,7 @@ window.CONFIG = {
     apiKey:    null,
     secretKey: null,
     shopName:  null,
-    searchUrl: "https://www.amazon.co.uk/alm/storefront?almBrandId=TW9ycmlzb25z&ref_=nav_cs_morri",
+    searchUrl: "xxxxx",
     enabled:   true,
   },
 
